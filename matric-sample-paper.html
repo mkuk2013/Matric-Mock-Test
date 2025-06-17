@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <title>IBA STS Matric Mock Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { display: none; }
+    #timer { font-size: 1.3rem; color: red; }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    .progress { height: 20px; margin-bottom: 10px; }
+
+    
+    
+
+    .result-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    
+
+    .header-block {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    
+
+    @media (max-width: 576px) {
+      .btn { font-size: 0.9rem; }
+      h1, h2, h4 { font-size: 1.2rem; }
+    }
+  
+
+
+
+
+
+
+
+.dark-mode {
+  background-color: #1e1e1e !important;
+  color: #f0f0f0 !important;
+}
+.dark-mode .form-check-label {
+  color: #ffffff !important;
+}
+.dark-mode footer {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+.dark-mode .card {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.dark-mode .card-title {
+  color: #ffffff !important;
+}
+
+
+.dark-mode .list-group-item {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+
+.dark-mode .header-block {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+
+.passage-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: inherit;
+ padding: 12px 16px; font-size: 0.95rem; overflow: hidden;}
+</style>
+
+  <script>
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const storedHash = "4b911ed9f6ddcaa0185748e7a967da966472fc62d69c27e748018b6d2cef6fea";
+
+    (async () => {
+      const entered = prompt("🔐 This quiz is password protected.\nPlease enter password:");
+      const enteredHash = await hashPassword(entered);
+      if (enteredHash === storedHash) {
+        document.addEventListener("DOMContentLoaded", () => {
+          document.body.style.display = "block";
+        });
+      } else {
+        document.write("<h2 style='text-align:center; color:red; margin-top:20%;'>Access Denied ❌<br>For password, WhatsApp: +923480358640</h2>");
+      }
+    })();
+  </script>
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <div class="header-block mb-3">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <h1 class="fw-bold text-center w-100 mb-2">IBA STS Official Sample Paper</h1>
+        <div class="w-100 text-center text-lg-end">
+          <button id="themeToggle" class="btn btn-sm btn-outline-dark" onclick="toggleDarkMode()">🌓 Dark Mode</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="timer" class="text-center mb-2">Time Remaining: 60:00</h2>
+    <div class="progress mb-3">
+      <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+    </div>
+    <div id="progressInfo" class="text-center mb-3 text-primary fw-bold"></div>
+
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <h4 id="questionElem" class="card-title">Question text will appear here</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item">
+            <div class="form-check">
+              <input type="radio" class="form-check-input answer" name="answer" id="a">
+              <label class="form-check-label" for="a" id="option1"></label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input type="radio" class="form-check-input answer" name="answer" id="b">
+              <label class="form-check-label" for="b" id="option2"></label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input type="radio" class="form-check-input answer" name="answer" id="c">
+              <label class="form-check-label" for="c" id="option3"></label>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="form-check">
+              <input type="radio" class="form-check-input answer" name="answer" id="d">
+              <label class="form-check-label" for="d" id="option4"></label>
+            </div>
+          </li>
+        </ul>
+        <div class="text-center">
+          <button id="prevBtn" class="btn btn-danger me-2">Previous</button>
+          <button id="button" class="btn btn-primary" disabled>Next</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center mt-4">
+      <p>Quiz Created By <a href="https://www.facebook.com/innoxent.mukesh">Mukesh Kumar</a></p>
+    </footer>
+  </div>
+  <script>
+    const quizData = [
+  // Part I: English - Reading & Comprehension
+  {
+    question: "‘The nations of the world wanted peace’. ‘Nations’ in the sentence means:",
+    option: ["people", "peoples", "pupils", "men"],
+    correct: 0,
+    passage: true,
+    section: "English"
+  },
+  {
+    question: "‘With these objectives in mind’. ‘Objectives’ in the text means:",
+    option: ["thoughts", "goals", "ideas", "aims"],
+    correct: 1,
+    passage: true,
+    section: "English"
+  },
+
+  // Synonyms
+  {
+    question: "The problem requires urgent attention.",
+    option: ["pressing", "important", "close", "much"],
+    correct: 0,
+    section: "English"
+  },
+
+  // Antonyms
+  {
+    question: "Money is not essential to happiness.",
+    option: ["unimportant", "inessential", "useless", "inferior"],
+    correct: 1,
+    section: "English"
+  },
+
+  // Spelling
+  {
+    question: "Find the correctly spelt word.",
+    option: ["deleneat", "delineate", "deleneate", "delinate"],
+    correct: 1,
+    section: "English"
+  },
+
+  // Error Detection
+  {
+    question: "Detect the error in the following sentence: Water is not perfect potable.",
+    option: ["A : Water", "B : not", "C : perfect", "D : potable"],
+    correct: 3,
+    section: "English"
+  },
+
+  // Prepositions
+  {
+    question: "We spent the whole holiday ___ beach.",
+    option: ["in", "up", "on", "at"],
+    correct: 2,
+    section: "English"
+  },
+
+  // Sentence Structure
+  {
+    question: "Which one of these is a complete sentence?",
+    option: ["Stop!", "My bag not there", "About fifty pounds!", "Why don’t you?"],
+    correct: 0,
+    section: "English"
+  },
+
+  // Part II: Mathematics
+  {
+    question: "What percent of 25 is 10?",
+    option: ["10", "2.5", "40", "25"],
+    correct: 2,
+    section: "Mathematics"
+  },
+  {
+    question: "What is the solution set of the equation x²-3x—10 = 0?",
+    option: ["{5,-2}", "{-5,-2}", "{-5,2}", "{5,2}"], // Placeholder
+    correct: 0,
+    section: "Mathematics"
+  },
+  {
+    question: "Expressed as meters per minute, 60 kilometers per hour is equivalent to:",
+    option: ["3.6 m/minute", "36 m/minute", "100 m/minute", "1,000 m/minute"],
+    correct: 3,
+    section: "Mathematics"
+  },
+  {
+    question: "Solve for x: 6(x+1) = 4x.",
+    option: ["3", "1", "6", "-3"], // Placeholder
+    correct: 3,
+    section: "Mathematics"
+  },
+
+  // Part III: General Knowledge - Current Affairs
+  {
+    question: "Louise Gluck from USA won the Nobel Prize 2020 in the field of…..",
+    option: ["Literature", "Physics", "Peace", "Mathematics"],
+    correct: 0,
+    section: "Current Affairs"
+  },
+
+  // Everyday Science
+  {
+    question: "The S.I unit of energy is:",
+    option: ["Joule (J)", "Calorie (cal)", "Watt (W)", "Erg"],
+    correct: 0,
+    section: "Everyday Science"
+  },
+
+  // Pakistan Studies
+  {
+    question: "Which country is not the neighbor of Pakistan?",
+    option: ["Iran", "China", "Iraq", "India"],
+    correct: 2,
+    section: "Pakistan Studies"
+  },
+
+  // Islamiat
+  {
+    question: "Which prophet of Islam is called “Imam ul ambiya”?",
+    option: ["Hazrat Adam A.S", "Hazrat Nooh A.S", "Hazrat Ibrahim A.S", "Hazrat Muhammad S.A.W"],
+    correct: 3,
+    section: "Islamiat"
+  },
+
+  // Computer
+  {
+    question: "Landscape is a?",
+    option: ["Font Style", "Page Orientation", "Paper Size", "Page Layout"],
+    correct: 1,
+    section: "Computer"
+  }
+];
+
+
+    function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  const btn = document.getElementById("themeToggle");
+  if (document.body.classList.contains("dark-mode")) {
+    btn.textContent = "🌞 Light Mode";
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-warning");
+  } else {
+    btn.textContent = "🌓 Dark Mode";
+    btn.classList.remove("btn-warning");
+    btn.classList.add("btn-outline-secondary");
+  }
+}
+
+    const ans = document.querySelectorAll(".answer");
+    const questionElem = document.querySelector("#questionElem");
+    const option1 = document.querySelector("#option1");
+    const option2 = document.querySelector("#option2");
+    const option3 = document.querySelector("#option3");
+    const option4 = document.querySelector("#option4");
+    const submitBtn = document.querySelector("#button");
+    const progressBar = document.querySelector("#progressBar");
+
+    let currentQuiz = 0;
+    let score = 0;
+    let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || [];
+    let sectionScores = {};
+    let totalSeconds = 900;
+
+    // Shuffle questions
+    function updateProgress() {
+      const percent = ((currentQuiz + 1) / quizData.length) * 100;
+      progressBar.style.width = `${percent}%`;
+    }
+
+    function loadQuiz() {
+      const q = quizData[currentQuiz];
+      
+    if (currentQuiz === 0 || currentQuiz === 1) {
+      questionElem.innerHTML = `<strong>Read the following passage carefully and answer the questions from 01 to 02 set below it.</strong><br>
+<pre class='passage-glass'>
+The United Nations came into being in 1945 after the Second World War that ended in the spring of 1945.
+The war had brought misery to all the world. Millions of people had been killed and made homeless.
+Millions of people suffered from hunger, poverty, disease, social, economical, political and other problems.
+The nations of the world wanted peace, happiness, justice and an end to the war. With these objectives in mind,
+the nations of the world formed the United Nations with the Head Quarters in New York.
+</pre><br><b>${currentQuiz + 1}/${quizData.length}:</b> ${q.question}`;
+    } else {
+      questionElem.innerHTML = `${currentQuiz + 1}/${quizData.length}: ${q.question}`;
+    }
+    
+      option1.innerText = q.option[0];
+      option2.innerText = q.option[1];
+      option3.innerText = q.option[2];
+      option4.innerText = q.option[3];
+      document.querySelector("#progressInfo").innerText = `Question ${currentQuiz + 1} of ${quizData.length}`;
+      document.getElementById("prevBtn").disabled = currentQuiz === 0;
+      updateProgress();
+      submitBtn.disabled = true;
+      deselect();
+      if (userAnswers[currentQuiz] !== undefined) {
+        ans[userAnswers[currentQuiz]].checked = true;
+        submitBtn.disabled = false;
+      }
+    }
+
+    function getSelected() {
+      let selectedIndex = -1;
+      ans.forEach((el, idx) => {
+        if (el.checked) selectedIndex = idx;
+      });
+      return selectedIndex;
+    }
+
+    function deselect() {
+      ans.forEach(el => el.checked = false);
+    }
+
+    ans.forEach(el => {
+      el.addEventListener("change", () => {
+        submitBtn.disabled = false;
+      });
+    });
+
+    loadQuiz();
+
+    document.querySelector("#prevBtn").addEventListener("click", () => {
+      if (currentQuiz > 0) {
+        currentQuiz--;
+        loadQuiz();
+      }
+    });
+
+    submitBtn.addEventListener("click", () => {
+      const selected = getSelected();
+      if (selected === -1) return;
+      userAnswers[currentQuiz] = selected;
+      localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+
+      const q = quizData[currentQuiz];
+      if (!sectionScores[q.section]) sectionScores[q.section] = { total: 0, correct: 0 };
+      sectionScores[q.section].total++;
+      if (selected === q.correct) {
+        score++;
+        sectionScores[q.section].correct++;
+      }
+
+      currentQuiz++;
+      if (currentQuiz < quizData.length) {
+        loadQuiz();
+        if (currentQuiz === quizData.length - 1) {
+          submitBtn.innerText = "Finish";
+        }
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      clearInterval(timerInterval);
+      localStorage.removeItem("userAnswers");
+      const timeTaken = 900 - totalSeconds;
+      const minutes = Math.floor(timeTaken / 60);
+      const seconds = timeTaken % 60;
+      let resultHTML = `
+        <div class="result-card text-center"><h4 class="text-center mb-3">🏁 Quiz Finished!</h4>
+        <h5 class="text-center">Your Score: ${score}/${quizData.length}</h5>
+        <h6 class="text-center text-muted">Time Taken: ${minutes}m ${seconds}s</h6>
+        <hr>
+        <div class="text-center mb-4"><div class="mb-3">
+          <strong>Section-wise Breakdown:</strong>
+          <ul style="list-style-position: inside; display: inline-block; text-align: left;">`;
+      for (let section in sectionScores) {
+        const sec = sectionScores[section];
+        const percent = ((sec.correct / sec.total) * 100).toFixed(1);
+        resultHTML += `<li>${section}: ${sec.correct}/${sec.total} (${percent}%)</li>`;
+      }
+      resultHTML += `</ul></ul></div>
+        <div class="mt-4 d-flex justify-content-center gap-3 result-buttons">
+<div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+<button class="btn btn-success" onclick="showReview()">📋 View Answer Review</button>
+<button class="btn btn-outline-primary mb-2" onclick="window.print()">📄 Print / Save PDF</button>
+</div></div>
+        <div class="text-center mt-4">
+          </div>
+<div class="text-center"><button class="btn btn-secondary" onclick="location.reload()">Restart</button>
+</div>
+        </div>`;
+
+      document.querySelector(".card-body").innerHTML = resultHTML;
+    }
+
+    function showReview() {
+      const container = document.querySelector(".card-body");
+      container.innerHTML = `<h4>📋 Review Answers</h4>`;
+      quizData.forEach((q, i) => {
+        const userAns = userAnswers[i];
+        const isCorrect = userAns === q.correct;
+        const userText = q.option[userAns] || "No Answer";
+        const correctText = q.option[q.correct];
+        const status = isCorrect ? "correct" : "incorrect";
+        const icon = isCorrect ? "✔️" : "❌";
+        container.innerHTML += `
+          <div class="mb-3">
+            <strong>${i + 1}. ${q.question}</strong><br>
+            <span class="${status}">${icon} Your Answer: ${userText}</span><br>
+            ${!isCorrect ? `<span class="correct">✔️ Correct Answer: ${correctText}</span>` : ""}
+          </div>`;
+      });
+      container.innerHTML += `
+        <button class="btn btn-outline-primary me-2" onclick="window.print()">🖨️ Print / Save PDF</button>
+        <button class="btn btn-primary" onclick="location.reload()">Restart</button>
+      </div>`;
+    }
+
+    const timerDisplay = document.getElementById("timer");
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
+      timerDisplay.textContent = `Time Remaining: ${m}:${s < 10 ? "0" + s : s}`;
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      } else {
+        clearInterval(timerInterval);
+        alert("Time's up!");
+        showResult();
+      }
+    }
+  </script>
+</body>
+</html>

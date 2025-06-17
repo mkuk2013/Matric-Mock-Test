@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBA STS Mock Tests</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #cce5ff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin-top: 60px;
+    }
+
+    .btn-test {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .btn-disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .blink-new {
+      color: red;
+      font-weight: bold;
+      animation: blinker 1s linear infinite;
+      margin-left: 8px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container text-center">
+    <h2 class="mb-3">IBA STS Matriculation Category</h2>
+    <h5 class="text-success mb-4">Daily Updated Mock Tests – 100% Based on Latest Matric Syllabus</h5>
+
+    <div class="alert alert-warning" role="alert">
+      All mock tests are password protected.<br>
+      For password, please contact on WhatsApp:<br>
+      <strong><a href="https://wa.me/923480358640" target="_blank">+923480358640</a></strong>
+    </div>
+
+    <p class="text-muted mb-4">Select a mock test to begin:</p>
+
+    <a href="quiz1.html" class="btn btn-primary btn-test w-100">Mock Test 1</a>
+    <a href="quiz2.html" class="btn btn-primary btn-test w-100">Mock Test 2</a>
+    <a href="quiz3.html" class="btn btn-primary btn-test w-100">Mock Test 3 </a>
+    <a href="quiz4.html" class="btn btn-primary btn-test w-100">Mock Test 4</a>
+    <!-- New Update Link -->
+    <a href="matric-sample-paper.html" class="btn btn-warning btn-test w-100">
+      Official IBA STS Sample Paper (Matric)
+      <span class="blink-new">New</span>
+    </a>
+
+    <a href="quiz5.html" class="btn btn-primary btn-test w-100">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mock Test 5 <span class="blink-new">New UI/UX</span></a>
+    <a href="quiz6.html" class="btn btn-primary btn-test w-100">Mock Test 6</a>
+    <a href="quiz7.html" class="btn btn-primary btn-test w-100">Mock Test 7</a>
+    <a href="quiz8.html" class="btn btn-primary btn-test w-100">Mock Test 8</a>
+    <a class="btn btn-secondary btn-test w-100 btn-disabled">Mock Test 9 (Coming Soon)</a>
+    <a class="btn btn-secondary btn-test w-100 btn-disabled">Mock Test 10</a>
+
+    <p class="note mt-4">
+      Prepared for IBA STS Screening Test (Matric Level)<br>
+      Stay consistent, practice daily, and ace your exam!
+    </p>
+  </div>
+</body>
+
+</html>
