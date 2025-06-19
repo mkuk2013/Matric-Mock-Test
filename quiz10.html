@@ -1,0 +1,781 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>IBA STS Matric Mock Test 10</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body {
+      background: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #000;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 30px;
+      margin-top: 50px;
+      color: #000;
+    }
+    .option {
+      background: rgba(255,255,255,0.8);
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      color: #000;
+    }
+    .dark-mode {
+      background: #121212;
+      color: white;
+    }
+    .dark-mode .glass-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+    .dark-mode .option {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .correct { background-color: #c8e6c9 !important; }
+    .wrong { background-color: #ffcdd2 !important; }
+    .icon-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+  
+.passage-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px;
+  color: #000;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+
+.dark-mode #english-passage,
+.dark-mode #english-passage pre {
+  color: white !important;
+}
+
+</style>
+</head>
+<body>
+<!-- English Glass Passage -->
+<!-- English Passage -->
+<div class="container">
+<div class="glass-card" id="quizContainer">
+<h2 class="text-center mb-4" id="quizHeading">🔒 Enter Password to Begin Mock Test 10</h2>
+<div class="input-group mb-4">
+<input class="form-control" id="passwordInput" placeholder="Enter password..." type="password"/>
+<button class="btn btn-light" id="startBtn">Enter</button>
+</div>
+<div id="quizContent" style="display: none;">
+<h2 class="text-center mb-3">IBA STS Mock Test 10 – Matric Category</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+<span><strong>⏱ Time Left: <span id="timerDisplay">60:00</span></strong></span>
+<button class="btn btn-outline-light btn-sm" id="modeToggle" onclick="toggleDarkMode()">🌗 Dark Mode</button>
+</div><div id="english-passage" style="display: none; margin: 20px auto; padding: 20px; border-radius: 15px;backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.2);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);max-width: 1200px; font-size: 16px; color: #000;">
+<strong>Read the Passage and answer the Questions at the end.</strong><br/>
+<pre style="white-space: pre-wrap;">
+A close look at the facts relating to political interference in administration shows that it is not a one-way process. There is often a nexus between power-hungry and corrupt politicians and civil servants with convenient principles. Many civil servants are only too anxious to oblige the politicians, and then cash the obligation when they need some special favour. So the attitude of self-righteousness adopted by the civil service is sometimes only a way of covering their own flaws by blaming others. Every now and then some retired civil servants come out with his memoirs, painting a glorious picture of the heights of administrative efficiency reached during his reign. There is often the suggestion that had there not been so much political interference, things would have been even more fantastic. It is not unusual for the self-styled hero to blame not only interfering politicians but also fellow civil servants who were idiots or crooks, for his failures. This attitude of smug self-satisfaction is, unfortunately, developed during the years of service. Self-preservation rather than service is encouraged by our whole system of rules and procedures. The remedy has to be drastic and quickly effective. The over-protection now granted to civil servants must end. Today to remove an erring civil servant is just not possible. And the only thing that the highest authority in the Government, both in the State and at the Centre, can do is to transfer an official from one job to another. The rules for taking disciplinary action are so complicated that, in the end, the defaulting civil servant gets away, and gets his full emoluments even for the period of the disciplinary proceedings, thus making it a paid holiday for him. The result is that the administration has become rule-oriented and not result-oriented. Action is possible against the official who takes some initiative in his work, but no action is ever taken against a person who does not deliver the goods. If the country is to adopt a result-oriented approach, it is necessary to link job performance with job retention.
+</pre>
+
+</div>
+<div id="questionBox"></div>
+<ul class="list-group" id="optionList"></ul>
+<div class="mt-3">
+<button class="btn btn-light me-2" onclick="prevQuestion()">Previous</button>
+<button class="btn btn-success" onclick="submitAnswer()">Next</button>
+</div>
+<p class="mt-3" id="progressText"></p>
+<div class="progress mt-3">
+<div class="progress-bar bg-info" id="timeBar" style="width:100%;"></div>
+</div>
+</div>
+</div>
+<div class="glass-card" id="resultContainer" style="display: none;">
+<h2 class="text-center">🎉 Test Completed!</h2>
+<p><strong>Score:</strong> <span id="finalScore"></span>/100</p>
+<p><strong>Time Taken:</strong> <span id="finalTime"></span></p>
+<button class="btn btn-info mb-3" onclick="printResult()">🖨 Print Result</button>
+     
+    <button class="btn btn-warning mb-3" onclick="restartQuiz()">🔁 Restart Quiz</button>
+<hr/>
+<div id="answerReview"></div>
+</div>
+</div>
+<script>
+const correctPasswordHash = "4b911ed9f6ddcaa0185748e7a967da966472fc62d69c27e748018b6d2cef6fea";
+
+  
+const quizData = [];
+  // English Section (36 Questions)
+  
+    // const englishPassage = "A close look at the facts relating to political interference in administration shows that it is not a one-way process. There is often a nexus between power-hungry and corrupt politicians and civil servants with convenient principles. Many civil servants are only too anxious to oblige the politicians, and then cash the obligation when they need some special favour. So the attitude of self-righteousness adopted by the civil service is sometimes only a way of covering their own flaws by blaming others. Every now and then some retired civil servants come out with his memoirs, painting a glorious picture of the heights of administrative efficiency reached during his reign. There is often the suggestion that had there not been so much political interference, things would have been even more fantastic. It is not unusual for the self-styled hero to blame not only interfering politicians but also fellow civil servants who were idiots or crooks, for his failures. This attitude of smug self-satisfaction is, unfortunately, developed during the years of service. Self-preservation rather than service is encouraged by our whole system of rules and procedures. The remedy has to be drastic and quickly effective. The over-protection now granted to civil servants must end. Today to remove an erring civil servant is just not possible. And the only thing that the highest authority in the Government, both in the State and at the Centre, can do is to transfer an official from one job to another. The rules for taking disciplinary action are so complicated that, in the end, the defaulting civil servant gets away, and gets his full emoluments even for the period of the disciplinary proceedings, thus making it a paid holiday for him. The result is that the administration has become rule-oriented and not result-oriented. Action is possible against the official who takes some initiative in his work, but no action is ever taken against a person who does not deliver the goods. If the country is to adopt a result-oriented approach, it is necessary to link job performance with job retention.";
+
+quizData.push(
+  {
+    question: "The facts relating to the problem of political interference indicate that",
+    option: ["honest bureaucrats are always being troubled by politicians", "politicians are often misled and trapped by civil servants", "politicians and civil servants co-operate to gain mutual advantages", "politicians and civil servants use interference as an excuse for victimizing the common man"],
+    correct: 2
+  },
+  {
+    question: "The attitude of self-righteousness adopted by the civil service, according to the writer",
+    option: ["is not welcomed and supported by politicians", "is dishonest and conceals the facts", "is very difficult to maintain because of opposition", "does not really help the public get fair treatment"],
+    correct: 1
+  },
+  {
+    question: "Civil servants who write their memoirs after retiring",
+    option: ["claim that they would have achieved outstanding success if interference had not come in the way", "prove that constant political interference made it impossible for them to do anything properly", "complain that the credit for their achievements goes to dishonest politicians", "prove that people of inferior quality in the civil service bring about interference"],
+    correct: 0
+  },
+  {
+    question: "The existing system of administration seems to encourage civil servants",
+    option: ["to become self-styled heroes and boss over others", "to present a glorious picture of the administration", "to become self-centered and concerned mainly about their own gain", "to become self-righteous and fight back against corrupt politicians"],
+    correct: 2
+  },
+  {
+    question: "The problem with the present set-up needing urgent action is",
+    option: ["a lack of accountability on the part of civil servants", "a lack of control over the power of politicians", "a neglect of the ideals of self-righteousness", "complicated rules and procedures that greatly reduce efficiency"],
+    correct: 3
+  },
+  {
+    question: "The main principle of the remedy proposed by the writer is, that",
+    option: ["the politicians should be made accountable for all their decisions", "the high level of protection enjoyed by civil servants should be reduced", "the common man’s right to efficient and fair administration must be protected", "rules should be simplified so that there is less scope for misuse"],
+    correct: 1
+  },
+  {
+    question: "According to existing procedures, if a civil servant is found to be unsuitable or dishonest,",
+    option: ["he can appeal to an authority like the Supreme Court", "politicians with whom he has special links will interfere to help him", "transferring him to another post is the usual action taken", "a conflict between Central Government and State Government interests can arise"],
+    correct: 2
+  },
+  {
+    question: "The writer refers to ‘a paid holiday’ to support his argument that",
+    option: ["civil servants get a lot of extra benefits", "disciplinary action is generally not quick or effective", "lazy and inefficient bureaucrats seem to be on holiday even when on duty", "special postings that ‘favoured’ civil servants are unnecessary and wasteful"],
+    correct: 1
+  },
+  {
+    question: "The expression ‘linking job performance with job retention’ refers to a policy in which",
+    option: ["selection to civil service jobs is on the basis of rigorous performance tests", "selection to civil service jobs is on the basis of rigorous performance and not a minister’s opinion is the basis of transfer or promotion", "retention of good Government servants by discouraging their going to private companies", "continuation in service will depend on satisfactory performance"],
+    correct: 3
+  },
+  {
+    question: "The expression ‘deliver the goods’ means",
+    option: ["show good job performance", "accept bribes or other illegal favours", "make payments of black money as bribes", "successfully defend oneself against a charge, in a disciplinary inquiry"],
+    correct: 0
+  },
+  {
+    question: "Synonym of 'Simulate' is ___?",
+    option: ["Imitate", "Original", "Genuine", "None of these"],
+    correct: 0
+  },
+  {
+    question: "Synonym of 'Decadence' is ___?",
+    option: ["Decency", "Depravity", "Goodness", "None of these"],
+    correct: 1
+  },
+  {
+    question: "Synonym of 'Prerogative' is ___?",
+    option: ["Privilege", "First Rate", "Paid", "None of these"],
+    correct: 0
+  },
+  {
+    question: "Synonym of 'Isolation' is ___?",
+    option: ["Fear", "Plenitude", "Solitude", "Disease"],
+    correct: 2
+  },
+  {
+    question: "Synonym of 'Acute' is ___?",
+    option: ["Not Serious", "Chronic", "Obtuse", "Severe"],
+    correct: 3
+  },
+  {
+    question: "Antonym of 'Fallow' is ___?",
+    option: ["Fatuous", "Productive", "Bountiful", "Pertinacious"],
+    correct: 1
+  },
+  {
+    question: "Antonym of 'Agile' is ___?",
+    option: ["Orderly", "Durable", "Stiff", "Gloomy"],
+    correct: 2
+  },
+  {
+    question: "Antonym of 'Imitation' is ___?",
+    option: ["Serious", "Separate", "Stable", "Genuine"],
+    correct: 3
+  },
+  {
+    question: "Antonym of 'Motile' is ___?",
+    option: ["Confused", "Frightened", "Immobile", "Willing"],
+    correct: 2
+  },
+  {
+    question: "Antonym of 'Improvident' is ___?",
+    option: ["Negligent", "Wasteful", "Sensible", "Reckless"],
+    correct: 2
+  },
+  {
+    question: "Choose the word that is spelled correctly?",
+    option: ["Allegedly", "Allegedely", "Alegedly", "Allegedeley"],
+    correct: 0
+  },
+  {
+    question: "Choose the word that is spelled correctly?",
+    option: ["Magistrate", "Magisterate", "Magistarte", "Maggistrate"],
+    correct: 0
+  },
+  {
+    question: "Choose the word that is spelled correctly?",
+    option: ["Pronounciation", "Pronounciaton", "Pronnounciation", "Pronunciation"],
+    correct: 3
+  },
+  {
+    question: "Choose the word that is spelled correctly?",
+    option: ["Parliamentarian", "Parlamentarian", "Parlimanterian", "Parliameterian"],
+    correct: 0
+  },
+  {
+    question: "Choose the word that is spelled correctly?",
+    option: ["Anniversary", "Aniversary", "Aniversary", "Anniversarry"],
+    correct: 0
+  },
+  {
+    question: "Fahad resign form job ___ January?",
+    option: ["in", "on", "at", "None of these"],
+    correct: 0
+  },
+  {
+    question: "A fool dog fell ___ water?",
+    option: ["into", "In", "inside", "None of these"],
+    correct: 0
+  },
+  {
+    question: "We trust ___ one God",
+    option: ["on", "In", "At", "None of these"],
+    correct: 1
+  },
+  {
+    question: "I am just a girl ___ a little rock.",
+    option: ["From", "With", "Along", "None of these"],
+    correct: 1
+  },
+  {
+    question: "Police said they found thirty bodies ___ wreckage?",
+    option: ["In", "between", "among", "under"],
+    correct: 2
+  },
+  {
+    question: "My book is different than yours because mine has a vocabulary section at the bottom of each page, and yours has one in the back.",
+    option: ["than", "yours because mine", "at the"],
+    correct: 2
+  },
+  {
+    question: "There are ten childs playing in the yard near her house, but your child is not among them.",
+    option: ["There are", "childs", "your child", "among them"],
+    correct: 1
+  },
+  {
+    question: "George has not completed the assignment yet, and Maria hasn’t neither.",
+    option: ["has not", "the assignment", "hasn’t neither"],
+    correct: 2
+  },
+  {
+    question: "These televisions are all too expensive for we to buy at this time, but perhaps we will return later.",
+    option: ["These", "all too expensive", "we to buy", "this time"],
+    correct: 2
+  },
+  {
+    question: "Choose the correct sentence structure:",
+    option: ["She not only sings but also dances", "She sings not only but also dances", "Not only she sings but also dances", "She not only sings and dances too"],
+    correct: 0
+  },
+  {
+    question: "Identify the part of speech of the word 'quickly' in the sentence: 'She runs quickly.'",
+    option: ["Noun", "Verb", "Adverb", "Adjective"],
+    correct: 2
+  },
+
+  // Mathematics Section (21 Questions)
+  {
+    question: "What is the Arithmetic Mean of the following data 3,6,9,12,15.",
+    option: ["7", "9", "12", "8"],
+    correct: 1
+  },
+  {
+    question: "Find two number whose sum is 28 and the difference is 4 ___?",
+    option: ["12,16", "18,10", "15,13", "14,12"],
+    correct: 0
+  },
+  {
+    question: "1 acre is equal to ___ square foot?",
+    option: ["45434 square foot", "34343 square foot", "43572 square foot", "43560 square foot"],
+    correct: 3
+  },
+  {
+    question: "What is the Sum of First 70 even Numbers?",
+    option: ["4970", "4950", "4900", "4980"],
+    correct: 0
+  },
+  {
+    question: "What is the Sum of First 70 Odd Numbers?",
+    option: ["4900", "4970", "4960", "None of these"],
+    correct: 1
+  },
+  {
+    question: "40 is subtracted from 60% of a number, the result is 50. Find the number?",
+    option: ["150", "140", "130", "110"],
+    correct: 0
+  },
+  {
+    question: "85% of a number is added to 24, the result is the same number. Find the number?",
+    option: ["150", "140", "130", "160"],
+    correct: 3
+  },
+  {
+    question: "60% of a number is added to 120, the result is the same number. Find the number?",
+    option: ["300", "200", "400", "500"],
+    correct: 0
+  },
+  {
+    question: "25% of 30% of 45% is equal to ___?",
+    option: ["0.03375", "0.3375", "3.375", "33.75"],
+    correct: 0
+  },
+  {
+    question: "40% of a number is more than 20% of 650 by 190. Find the number?",
+    option: ["600", "700", "800", "900"],
+    correct: 1
+  },
+  {
+    question: "Find the least square number which is divisible by 10, 12, 15 and 18?",
+    option: ["1600", "900", "3600", "2500"],
+    correct: 2
+  },
+  {
+    question: "Three men start together to travel the same way around a circular track of 11 kilometers in circumference. Their speeds are 4, 5 and 8 kilometers per hour respectively. When will they meet at a starting point?",
+    option: ["11 hours", "12 hours", "22 hours", "22 hours"],
+    correct: 2
+  },
+  {
+    question: "Find the least multiple of 13 which when divided by 6, 8 and 12 leaves 5, 7 and 11 as remainders respectively?",
+    option: ["143", "169", "260", "221"],
+    correct: 2
+  },
+  {
+    question: "Find the least number which when divided by 6, 7, 8, 9 and 10 leaves 1, 2, 3, 4 and 5 as remainders respectively, but when divided by 19 leaves no remainder?",
+    option: ["5073", "5016", "5054", "5035"],
+    correct: 0
+  },
+  {
+    question: "Find the least number which when divided by 2, 3, 4, 5 and 6 leaves 1, 2, 3, 4 and 5 as remainders respectively, but when divided by 7 leaves no remainder?",
+    option: ["210", "119", "126", "154"],
+    correct: 3
+  },
+  {
+    question: "A heap of stones can be made up into groups of 21. When made up into groups of 16, 20, 25 and 45 there are 3 stones left in each case. How many stones at least can there be in the heap?",
+    option: ["7203", "2403", "3603", "4803"],
+    correct: 3
+  },
+  {
+    question: "Find the greatest number of four digits which when divided by 10, 15, 21 and 28 leaves 4, 9, 15 and 22 as remainders respectively?",
+    option: ["9654", "9666", "9664", "9864"],
+    correct: 2
+  },
+  {
+    question: "Find the least number which when divided by 35 leaves remainder 25, when divided by 25 leaves remainder 15 and when divided by 15 leaves remainder 5?",
+    option: ["420", "515", "435", "518"],
+    correct: 2
+  },
+  {
+    question: "What is the least number which when divided by 8, 12, 18 and 24 leaves the remainders 4, 8, 14 and 20 respectively?",
+    option: ["78", "68", "58", "None"],
+    correct: 3
+  },
+  {
+    question: "The wheels revolve round a common horizontal axis. They make 15, 20 and 48 revolutions in a minute respectively. Starting with a certain point on the circumference downward. After what interval of time will they come together in the same position?",
+    option: ["1 min", "2 min", "3 min", "None"],
+    correct: 2
+  },
+  {
+    question: "What is the value of x if 3x + 5 = 20?",
+    option: ["5", "6", "7", "8"],
+    correct: 3
+  },
+
+  // Current Affairs / General Knowledge Section (16 Questions)
+  {
+    question: "‘The International Day to End Impunity for Crimes against Journalists’ day observed annually on ___?",
+    option: ["30 September", "2 November", "5 November", "None of These"],
+    correct: 0
+  },
+  {
+    question: "Who is the Current President of India ?",
+    option: ["Pranab Mukherjee", "Nirmala Sitharaman", "Rajnath Singh", "Droupadi Murmu"],
+    correct: 3
+  },
+  {
+    question: "Khabib Nurmagomedov a former UFC lightweight champion who remained undefeated in his whole career belongs to which Muslim majority states of Russia?",
+    option: ["Abkhazia", "Yakutia", "Dagestan", "Sakha"],
+    correct: 2
+  },
+  {
+    question: "Who is the Current Prime Minister of Russia?",
+    option: ["Mikhail Mishustin", "Boris Johnson", "Liz Truss", "Vladimir Putin"],
+    correct: 0
+  },
+  {
+    question: "The Current UK Prime Minister Keir Starmer belongs to the ___ Party?",
+    option: ["Scottish National Party", "Labour Party", "Conservative Party", "Liberal Party"],
+    correct: 1
+  },
+  {
+    question: "The newly elected Foreign Minister of the Canada, Anita Anand, belongs to ___ origin?",
+    option: ["India", "Nepal", "Sri Lankan", "American"],
+    correct: 0
+  },
+  {
+    question: "The 2025 ICC Men’s Champion Trophy is being hosted by ___?",
+    option: ["India", "Pakistan", "England", "India"],
+    correct: 1
+  },
+  {
+    question: "The Future Investment Initiative (FII) was launched by Saudi Arabia in ___?",
+    option: ["2013", "2015", "2017", "2019"],
+    correct: 2
+  },
+  {
+    question: "The 15th Islamic Summit Conference of OIC member states held in Banjul, The Gambia on:",
+    option: ["4-5 May 2024", "4-5 May 2025", "8-9 May 2024", "8-9 May 2025"],
+    correct: 1
+  },
+  {
+    question: "‘Combating Disinformation and Islamophobia in the Post-Truth Era’ declaration was adopted in ___?",
+    option: ["Istanbul Declaration", "Ankara Declaration", "OIC 12th Declaration", "None of these"],
+    correct: 3
+  },
+  {
+    question: "Newly elected President of Poland is_",
+    option: ["Stefan Lofven", "Andreas norlén", "Mario Draghi", "Karol Nawrocki"],
+    correct: 3
+  },
+  {
+    question: "Volodymyr Zelensky is the current President of_",
+    option: ["Italy", "France", "Sweden", "Ukraine"],
+    correct: 3
+  },
+  {
+    question: "Recently which country drops controversial Trump-Era recognition of West Jerusalem as Israel’s Capital?",
+    option: ["Kuwait", "Bangladesh", "Syria", "Australia"],
+    correct: 3
+  },
+  {
+    question: "Who has been awarded the Nobel Prize 2024 in Literature?",
+    option: ["Dr. Svante Pääbo", "David Julius", "Adam Patapoutian", "Han Kang"],
+    correct: 3
+  },
+  {
+    question: "Who is the Current CEO of YouTube ?",
+    option: ["Sundar Pichai", "Parag Agrawal", "Susan Wojcicki", "Neal Mohan"],
+    correct: 3
+  },
+  {
+    question: "Which country hosted the 2024 Summer Olympics?",
+    option: ["France", "Japan", "United States", "Brazil"],
+    correct: 0
+  },
+
+  // Computer Science Section (11 Questions)
+  {
+    question: "You can organize files by storing them in ___?",
+    option: ["archives", "folders", "indexes", "lists"],
+    correct: 1
+  },
+  {
+    question: "What type of resource is most likely to be a shared common resource in a computer network?",
+    option: ["Printers", "Speakers", "Floppy disk drives", "None of these"],
+    correct: 0
+  },
+  {
+    question: "Which device is required for the Internet connection?",
+    option: ["Joystick", "Modem", "CD Drive", "NIC Card"],
+    correct: 1
+  },
+  {
+    question: "What is a light pen?",
+    option: ["A Mechanical Input device", "Optical input device", "Electronic input device", "Optical output device"],
+    correct: 1
+  },
+  {
+    question: "UNIVAC is_?",
+    option: ["Universal Automatic Computer", "Universal Array Computer", "Unique Automatic Computer", "Unvalued Automatic Computer"],
+    correct: 0
+  },
+  {
+    question: "The capacity of 3.5 inch floppy disk was ___?",
+    option: ["1.40 MB", "1.44 GB", "1.44 MB", "1.44 MB"],
+    correct: 2
+  },
+  {
+    question: "MICR stands for_?",
+    option: ["Magnetic ink character recognition", "Magnetic Ink Code Reader", "Magnetic Ink Cases Reader", "None of these"],
+    correct: 0
+  },
+  {
+    question: "EBCDIC stands for_?",
+    option: ["Extended Binary Coded Decimal Interchange Code", "Extended Bit Code Decimal Interchange Code", "Extended Bit Case Decimal Interchange Code", "Extended Binary Case Decimal Interchange Code"],
+    correct: 0
+  },
+  {
+    question: "Which of the following is a part of the Central Processing Unit?",
+    option: ["Printer", "Key board", "Mouse", "Arithmetic & Logic unit"],
+    correct: 3
+  },
+  {
+    question: "CAD stands for_?",
+    option: ["Computer aided design", "Computer algorithm for design", "Computer application in design", "Computer analogue design"],
+    correct: 0
+  },
+  {
+    question: "What is the primary function of an operating system?",
+    option: ["Run applications", "Manage hardware and software resources", "Store data", "Design graphics"],
+    correct: 1
+  },
+
+  // Islamic Studies Section (6 Questions)
+  {
+    question: "The name 'Muhammad' has been mentioned ___ times in the Holy Quran.",
+    option: ["1", "2", "3", "4"],
+    correct: 3
+  },
+  {
+    question: "Which Surah of Quran has Bismillah twice?",
+    option: ["Aal-e-Imraan", "Al-Namal", "Yaaseen", "Muhammad"],
+    correct: 1
+  },
+  {
+    question: "Which surah starts without 'Bismillah' ?",
+    option: ["Al-Baqara", "Al-Nisa", "Al-Toba", "Al-Ikhlas"],
+    correct: 2
+  },
+  {
+    question: "Which surah contains the orders about Wuzu, Ghusal and Tayammum ?",
+    option: ["Al-Maidah", "Al-Baqara", "Al-Mominun", "Al-Nisa"],
+    correct: 0
+  },
+  {
+    question: "Which famous Ghazwah is mentioned in surah Al-Imran ?",
+    option: ["Ghazwah Ohad", "Ghazwah Badr", "Ghazwah Khaibar", "Ghazwah Khandaq"],
+    correct: 1
+  },
+  {
+    question: "Which month is considered the holiest in the Islamic calendar?",
+    option: ["Ramadan", "Rajab", "Shaaban", "Muharram"],
+    correct: 0
+  },
+
+  // Everyday Science Section (11 Questions)
+  {
+    question: "The Sun is a ___?",
+    option: ["Star", "Planet", "Asteroid", "Meteor"],
+    correct: 0
+  },
+  {
+    question: "The gas used in a refrigerator to cool water is ___?",
+    option: ["Nitrogen", "Carbon dioxide", "Methane", "Tetrafluoroethane"],
+    correct: 3
+  },
+  {
+    question: "The average adult has a blood volume of about ___ liters.",
+    option: ["4", "5", "6", "7"],
+    correct: 1
+  },
+  {
+    question: "The most abundant element in the universe is ___?",
+    option: ["Oxygen", "Hydrogen", "Carbon Dioxide", "Silicon"],
+    correct: 1
+  },
+  {
+    question: "The most abundant element in the Earth’s crust is ___?",
+    option: ["Oxygen", "Hydrogen", "Carbon Dioxide", "Silicon"],
+    correct: 0
+  },
+  {
+    question: "Each day human body breathe in ___ liters of air.",
+    option: ["5,000 to 10,000", "10,000 to 15,000", "15,000 to 20,000", "20,000 to 25,000"],
+    correct: 2
+  },
+  {
+    question: "Deficiency of Vitamin-D results in ___?",
+    option: ["night blindness", "rickets", "scurvy", "hair fall"],
+    correct: 1
+  },
+  {
+    question: "The SI unit of 'pressure' is ___?",
+    option: ["pascal", "joule", "tesla", "henry"],
+    correct: 0
+  },
+  {
+    question: "The most densest substance on the Earth is ___?",
+    option: ["Platinum", "Copper", "Steel", "Osmium"],
+    correct: 3
+  },
+  {
+    question: "A camera uses a ___ to form an image.",
+    option: ["convex lens", "concave lens", "condenser lens", "none of these"],
+    correct: 0
+  },
+  {
+    question: "What is the primary source of energy for Earth’s climate system?",
+    option: ["Geothermal energy", "Solar energy", "Wind energy", "Tidal energy"],
+    correct: 1
+  
+ });
+
+
+// export removed for browser compatibility
+
+let currentQuestion = 0;
+let score = 0;
+let userAnswers = [];
+let startTime = Date.now();
+let timeLeft = 3600;
+
+async function sha256(text) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function verifyPassword() {
+  const input = document.getElementById("passwordInput").value;
+  const hash = await sha256(input);
+  if (hash === correctPasswordHash) {
+    document.getElementById("quizContent").style.display = "block";
+    document.querySelector(".input-group").style.display = "none";
+    document.getElementById("quizHeading").style.display = "none";
+    showQuestion();
+    startTimer();
+  } else {
+    alert("Incorrect password!");
+  }
+}
+
+document.getElementById("startBtn").addEventListener("click", verifyPassword);
+
+function showQuestion() {
+  const passage = document.getElementById("english-passage");
+if (passage) {
+  passage.style.display = (currentQuestion >= 0 && currentQuestion <= 9) ? "block" : "none";
+}
+  const q = quizData[currentQuestion];
+  document.getElementById("questionBox").innerHTML = `<h5>Q${currentQuestion + 1}: ${q.question}</h5>`;
+  const list = document.getElementById("optionList");
+  list.innerHTML = "";
+  q.option.forEach((opt, idx) => {
+    const li = document.createElement("li");
+    li.className = "list-group-item option";
+    li.innerHTML = `<input type='radio' name='option' value='${idx}'> ${opt}`;
+    list.appendChild(li);
+  });
+  document.getElementById("progressText").innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+}
+
+function submitAnswer() {
+  const selected = document.querySelector('input[name="option"]:checked');
+  if (!selected) return alert("Please select an option.");
+  const selectedIndex = parseInt(selected.value);
+  userAnswers.push(selectedIndex);
+  if (selectedIndex === quizData[currentQuestion].correct) score++;
+  currentQuestion++;
+  if (currentQuestion < quizData.length) showQuestion();
+  else finishTest();
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion();
+  }
+}
+
+function finishTest() {
+  document.getElementById("quizContainer").style.display = "none";
+  document.getElementById("resultContainer").style.display = "block";
+  const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+  document.getElementById("finalScore").innerText = score;
+  document.getElementById("finalTime").innerText = `${Math.floor(timeTaken/60)}m ${timeTaken%60}s`;
+
+  const review = document.getElementById("answerReview");
+  review.innerHTML = '<h4>📝 Answer Review:</h4>';
+  quizData.forEach((q, i) => {
+    const userAns = userAnswers[i];
+    const correctAns = q.correct;
+    let optionsHTML = q.option.map((opt, idx) => {
+      let className = '';
+      let label = '';
+      if (idx === correctAns) {
+        className = 'correct';
+        label = '✅ Correct Answer';
+      }
+      if (idx === userAns && userAns !== correctAns) {
+        className = 'wrong';
+        label = '❌ Your Answer is incorrect';
+      }
+      return `<li class="list-group-item ${className}">${opt} ${label ? `<span class='ms-2 fw-bold'>${label}</span>` : ''}</li>`;
+    }).join('');
+    review.innerHTML += `<div class='mb-4'><h6>Q${i+1}: ${q.question}</h6><ul class='list-group'>${optionsHTML}</ul></div>`;
+  });
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  const modeBtn = document.getElementById("modeToggle");
+  modeBtn.innerHTML = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌗 Dark Mode";
+}
+
+function startTimer() {
+  const display = document.getElementById("timerDisplay");
+  const bar = document.getElementById("timeBar");
+  const interval = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      finishTest();
+    } else {
+      timeLeft--;
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      display.textContent = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+      bar.style.width = (timeLeft / 3600) * 100 + "%";
+    }
+  }, 1000);
+}
+
+function printResult() {
+  window.print();
+}
+
+function restartQuiz() {
+  location.reload();
+}
+</script>
+</body>
+</html>

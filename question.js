@@ -1,10 +1,11 @@
-// Base format: quizData.push({ question, option, correct });
 const quizData = [];
 
 // English Section
+const englishPassage = "A close look at the facts relating to political interference in administration shows that it is not a one-way process. There is often a nexus between power-hungry and corrupt politicians and civil servants with convenient principles. Many civil servants are only too anxious to oblige the politicians, and then cash the obligation when they need some special favour. So the attitude of self-righteousness adopted by the civil service is sometimes only a way of covering their own flaws by blaming others. Every now and then some retired civil servants come out with his memoirs, painting a glorious picture of the heights of administrative efficiency reached during his reign. There is often the suggestion that had there not been so much political interference, things would have been even more fantastic. It is not unusual for the self-styled hero to blame not only interfering politicians but also fellow civil servants who were idiots or crooks, for his failures. This attitude of smug self-satisfaction is, unfortunately, developed during the years of service. Self-preservation rather than service is encouraged by our whole system of rules and procedures. The remedy has to be drastic and quickly effective. The over-protection now granted to civil servants must end. Today to remove an erring civil servant is just not possible. And the only thing that the highest authority in the Government, both in the State and at the Centre, can do is to transfer an official from one job to another. The rules for taking disciplinary action are so complicated that, in the end, the defaulting civil servant gets away, and gets his full emoluments even for the period of the disciplinary proceedings, thus making it a paid holiday for him. The result is that the administration has become rule-oriented and not result-oriented. Action is possible against the official who takes some initiative in his work, but no action is ever taken against a person who does not deliver the goods. If the country is to adopt a result-oriented approach, it is necessary to link job performance with job retention.";
+
 quizData.push(
   {
-    question: "What is the main reason Dr. Abdul Qadeer Khan is famous in Pakistan?",
+    question: "The facts relating to the problem of political interference indicate that",
     option: ["He was a national poet", "He built roads", "He led the army", "He developed the nuclear program"],
     correct: 3
   },
@@ -54,6 +55,7 @@ quizData.push(
     correct: 0
   }
 );
+
 
 // Math Section
 quizData.push(
@@ -478,5 +480,60 @@ quizData.push(
     question: "How does reading help students?",
     option: ["Makes them lazy", "Improves focus and knowledge", "Distracts them", "Wastes time"],
     correct: 1
+  }
+);
+
+
+// Final Review Section
+quizData.push(
+  {
+    question: "Which is the largest continent by area?",
+    option: ["Africa", "Asia", "Europe", "North America"],
+    correct: 1
+  },
+  {
+    question: "What is the national flower of Pakistan?",
+    option: ["Rose", "Sunflower", "Jasmine", "Tulip"],
+    correct: 2
+  },
+  {
+    question: "How many colors are there in the rainbow?",
+    option: ["5", "6", "7", "8"],
+    correct: 2
+  },
+  {
+    question: "Which organ purifies blood in the human body?",
+    option: ["Liver", "Heart", "Lungs", "Kidneys"],
+    correct: 3
+  },
+  {
+    question: "Which day is celebrated as Pakistan Resolution Day?",
+    option: ["14 August", "23 March", "6 September", "25 December"],
+    correct: 1
+  },
+  {
+    question: "Who was the first female Prime Minister of Pakistan?",
+    option: ["Fatima Jinnah", "Benazir Bhutto", "Hina Rabbani", "Asma Jahangir"],
+    correct: 1
+  },
+  {
+    question: "Which instrument is used to measure temperature?",
+    option: ["Barometer", "Speedometer", "Thermometer", "Altimeter"],
+    correct: 2
+  },
+  {
+    question: "Which month comes after September?",
+    option: ["October", "November", "August", "December"],
+    correct: 0
+  },
+  {
+    question: "How many players are there in a cricket team?",
+    option: ["10", "11", "12", "9"],
+    correct: 1
+  },
+  {
+    question: "Which gas do we breathe in to survive?",
+    option: ["Carbon Dioxide", "Nitrogen", "Oxygen", "Helium"],
+    correct: 2
   }
 );
