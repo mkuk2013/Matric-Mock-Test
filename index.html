@@ -4,135 +4,1286 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IBA STS Mock Tests</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>IBA STS Mock Tests - Elevate Your Prep!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
+    /* New Design Color Palette & Variables */
+    :root {
+      --primary-blue: #2c7ef8;
+      /* Vibrant Blue */
+      --secondary-blue: #0056b3;
+      /* Deeper Blue */
+      --accent-green: #2ecc71;
+      /* Fresh Green for highlights */
+      --accent-orange: #e67e22;
+      /* Warm Orange for special cards */
+      --bg-light: #f8f9fa;
+      /* Very light gray background */
+      --text-dark: #212529;
+      /* Dark text */
+      --text-muted: #6c757d;
+      /* Muted gray text */
+      --card-bg-light: #ffffff;
+      /* White card background */
+      --border-light: rgba(0, 0, 0, 0.08);
+      /* Light border */
+      --shadow-light: rgba(0, 0, 0, 0.05);
+      /* Subtle shadow */
+      --new-badge-bg: #ff4d4d;
+      /* Bright Red for New badge */
+      --footer-bg-light: #f0f2f5;
+    }
+
+    /* Dark Mode Variables */
+    body.dark {
+      --primary-blue: #6aa8fe;
+      /* Lighter Blue for dark mode */
+      --secondary-blue: #3a7bd5;
+      /* Mid Blue for dark mode */
+      --accent-green: #58d68d;
+      /* Lighter green */
+      --accent-orange: #f39c12;
+      /* Lighter orange */
+      --bg-light: #1a1a2e;
+      /* Deep dark background */
+      --text-dark: #e0e0e0;
+      /* Light text */
+      --text-muted: #b0b8c0;
+      /* Lighter muted text */
+      --card-bg-light: #2c2c40;
+      /* Darker card background */
+      --border-light: rgba(255, 255, 255, 0.12);
+      /* Dark border */
+      --shadow-light: rgba(0, 0, 0, 0.3);
+      /* More pronounced shadow */
+      --new-badge-bg: #ff6666;
+      /* Slightly softer red */
+      --footer-bg-light: #232338;
+    }
+
     body {
-      background-color: #cce5ff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.4s ease, color 0.4s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .container {
-      max-width: 600px;
-      margin-top: 60px;
+    /* Header & Hero Section */
+    .hero-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      padding: 80px 20px 60px;
+      text-align: center;
+      box-shadow: 0 6px 20px var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
     }
 
-    .btn-test {
-      margin: 10px 0;
-      font-size: 1.1rem;
+    /* particles.js container styling */
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      /* Ensures particles are behind text */
     }
 
-    .btn-disabled {
-      pointer-events: none;
-      opacity: 0.6;
+    .hero-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+      position: relative;
+      z-index: 1;
+      /* Ensures text is above particles */
     }
 
-    .note {
-      font-size: 0.95rem;
-      color: #555;
+    .hero-header p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 0;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      /* Ensures text is above particles */
     }
 
-    @keyframes blinker {
-      50% {
-        opacity: 0;
+    .typing-text {
+      display: inline-block;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 1.6rem;
+      margin-top: 30px;
+      width: 280px;
+      min-height: 1.8em;
+      animation: typing 3.5s steps(30, end) infinite;
+      position: relative;
+      z-index: 1;
+      /* Ensures text is above particles */
+    }
+
+    @keyframes typing {
+      from {
+        width: 0
       }
     }
 
-    /* .blink-new {
-  color: #fff;
-  font-weight: bold;
-  animation: blinker 1s linear infinite;
-  margin-left: 8px;
-  text-shadow: 0 0 6px red, 0 0 10px red;
-} */
 
-/* .blink-new {
-  color: #fff;
-  background-color: red;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 6px;
-  animation: blinker 1s linear infinite;
-  margin-left: 8px;
-} */
+    /* Important Notice Styling */
+    .important-notice {
+      max-width: 1200px;
+      margin: 40px auto 30px;
+      background: #fff3cd;
+      border-left: 6px solid var(--accent-orange);
+      padding: 22px 30px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      color: #856404;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      flex-wrap: nowrap;
+    }
 
-/* .blink-new {
-  color: white;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px red;
-  animation: blinker 1s linear infinite;
-  margin-left: 8px;
-} */
+    .important-notice::before {
+      content: '🚨';
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .important-notice strong {
+      font-weight: 700;
+      color: #725200;
+    }
+
+    .important-notice a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .important-notice a:hover {
+      text-decoration: underline;
+      transform: translateX(3px);
+    }
+
+    body.dark .important-notice {
+      background: #3e300b;
+      border-left-color: var(--accent-orange);
+      color: #ffe082;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .important-notice strong {
+      color: #fff3cd;
+    }
+
+    body.dark .important-notice a {
+      color: var(--primary-blue);
+    }
 
 
-/* .blink-new {
-  background: linear-gradient(to right, red, orange);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  animation: blinker 1s linear infinite;
-  margin-left: 8px;
-} */
+    /* Dark/Light Mode Toggle */
+    #toggleMode {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-dark);
+      background: var(--card-bg-light);
+      border: 1px solid var(--border-light);
+      border-radius: 30px;
+      padding: 10px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px var(--shadow-light);
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      user-select: none;
+      font-weight: 500;
+    }
+
+    #toggleMode:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    body.dark #toggleMode {
+      background: var(--card-bg-light);
+      color: var(--text-dark);
+      border-color: var(--border-light);
+      box-shadow: 0 44px 10px var(--shadow-light);
+    }
+
+    /* Main Section */
+    .main-section {
+      max-width: 1080px;
+      margin: 50px auto;
+      padding: 0 25px;
+      flex-grow: 1;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 45px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--primary-blue);
+      position: relative;
+      padding-bottom: 15px;
+      transition: color 0.4s ease;
+    }
+
+    .section-title::before {
+      content: "✨";
+      margin-right: 12px;
+      font-size: 1.8rem;
+      vertical-align: middle;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-green);
+      border-radius: 2px;
+      transition: background 0.4s ease;
+    }
+
+    body.dark .section-title {
+      color: var(--primary-blue);
+    }
+
+    body.dark .section-title::after {
+      background: var(--accent-green);
+    }
+
+    /* Grid Layout for Cards */
+    .mock-test-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .mock-test-grid a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Card Styling */
+    .card-item {
+      background: var(--card-bg-light);
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      padding: 20px 18px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 8px 20px var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+      box-sizing: border-box;
+      will-change: transform, box-shadow;
+    }
+
+    .card-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 6px;
+      background: var(--primary-blue);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      transition: width 0.8s ease-in-out;
+    }
+
+    .card-item:hover::before {
+      width: 100%;
+    }
+
+    .card-item:hover {
+      transform: translateY(-8px) scale(1.03) rotateZ(0.5deg);
+      /* Original shadow for lift + new glow shadow */
+      box-shadow:
+        0 15px 35px rgba(0, 123, 255, 0.3),
+        /* Original lift shadow */
+        0 0 25px 5px rgba(0, 123, 255, 0.5);
+      /* New glow effect */
+      border-color: var(--primary-blue);
+      /* Stronger border on hover */
+    }
+
+    body.dark .card-item:hover {
+      box-shadow:
+        0 15px 35px rgba(77, 171, 247, 0.35),
+        /* Dark mode original lift shadow */
+        0 0 25px 5px rgba(77, 171, 247, 0.6);
+      /* Dark mode new glow effect */
+      border-color: var(--primary-blue);
+      /* Dark mode stronger border on hover */
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: var(--accent-green);
+      transition: color 0.3s ease;
+      line-height: 1;
+      animation: pulse 2.5s infinite ease-in-out;
+    }
+
+    body.dark .card-icon {
+      color: var(--accent-green);
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 0.9;
+      }
+    }
+
+    .card-item h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--text-dark);
+    }
+
+    .card-item span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    /* Special Card Styles */
+    .card-official-sample {
+      background: linear-gradient(160deg, var(--accent-orange), #ffcd78);
+      color: white;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
+      border: none;
+    }
+
+    body.dark .card-official-sample {
+      background: linear-gradient(160deg, var(--accent-orange), #ffb74d);
+      box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+    }
 
 
-/* .blink-new {
-  color: #ff4d4d;
-  font-weight: bold;
-  text-shadow: 0 0 3px #ff4d4d, 0 0 8px #ff1a1a;
-  animation: blinker 1s step-start infinite;
-  margin-left: 8px;
-} */
+    .card-official-sample .card-icon {
+      color: white;
+      animation: rotateScalePulse 3s infinite ease-in-out;
+    }
 
-.blink-new {
-  display: inline-block;
-  background: crimson;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  animation: blinker 1.5s ease-in-out infinite;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  margin-left: 10px;
-}
+    .card-official-sample h3,
+    .card-official-sample span {
+      color: white;
+    }
 
+    .card-official-sample:hover {
+      transform: translateY(-10px) scale(1.04) rotateZ(-0.5deg);
+      box-shadow: 0 18px 40px rgba(230, 126, 34, 0.45);
+    }
+
+    @keyframes rotateScalePulse {
+      0%,
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        transform: scale(1.1) rotate(8deg);
+      }
+    }
+
+
+    /* NEW Badge styling */
+    .badge-new {
+      display: inline-block;
+      background: var(--new-badge-bg);
+      color: white !important;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      animation: badgeBlinker 1.8s ease-in-out infinite;
+      box-shadow: 0 2px 6px rgba(255, 77, 77, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      margin-top: 8px;
+      transform-origin: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes badgeBlinker {
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(0.98);
+      }
+    }
+
+    /* Animations for initial load */
+    @keyframes fadeInSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInSlideUp 0.9s ease-out both;
+    }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-5 {
+      animation-delay: 0.5s;
+    }
+
+    .delay-6 {
+      animation-delay: 0.6s;
+    }
+
+    .delay-7 {
+      animation-delay: 0.7s;
+    }
+
+    .delay-8 {
+      animation-delay: 0.8s;
+    }
+
+    .delay-9 {
+      animation-delay: 0.9s;
+    }
+
+    .delay-10 {
+      animation-delay: 1.0s;
+    }
+
+    .delay-11 {
+      animation-delay: 1.1s;
+    }
+
+    .delay-12 {
+      animation-delay: 1.2s;
+    }
+    .delay-13 {
+      animation-delay: 1.3s;
+    }
+    .delay-14 {
+      animation-delay: 1.4s;
+    }
+    .delay-15 {
+      animation-delay: 1.5s;
+    }
+    .delay-16 {
+      animation-delay: 1.6s;
+    }
+    .delay-17 {
+      animation-delay: 1.7s;
+    }
+
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding: 50px 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      background: var(--footer-bg-light);
+      border-top: 1px solid var(--border-light);
+      box-shadow: 0 -4px 15px var(--shadow-light);
+      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+
+    footer strong {
+      display: block;
+      margin-top: 15px;
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: color 0.4s ease;
+    }
+
+    .social-links {
+      margin: 25px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 25px;
+      background: var(--card-bg-light);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 2px 8px var(--shadow-light);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px) scale(1.05);
+      background: var(--primary-blue);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+    }
+
+    .social-links a:hover i {
+      transform: rotate(8deg) scale(1.1);
+      color: unset;
+    }
+
+    .social-links a i {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      color: unset;
+    }
+
+    /* Dark Mode specific social link adjustments */
+    body.dark .social-links a {
+      background: var(--card-bg-light);
+      border-color: var(--border-light);
+      box-shadow: 0 2px 8px var(--shadow-light);
+    }
+
+    body.dark .social-links a i {
+      color: unset;
+    }
+
+    body.dark .social-links a:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    body.dark .social-links a:hover i {
+      color: unset;
+    }
+
+    /* Go to Top Button Styles */
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: var(--primary-blue);
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+      opacity: 0;
+    }
+
+    #scrollToTopBtn:hover {
+      background-color: var(--secondary-blue);
+      transform: translateY(-3px);
+    }
+
+    body.dark #scrollToTopBtn {
+      background-color: var(--primary-blue);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark #scrollToTopBtn:hover {
+      background-color: var(--secondary-blue);
+    }
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+      .mock-test-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-header h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-header p {
+        font-size: 1.15rem;
+      }
+
+      .typing-text {
+        font-size: 1.4rem;
+        width: 220px;
+      }
+
+      .main-section {
+        padding: 0 20px;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+
+      .mock-test-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .card-item {
+        min-height: 160px;
+        padding: 18px 15px;
+      }
+
+      .card-item h3 {
+        font-size: 1.1rem;
+      }
+
+      .card-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-header {
+        padding: 60px 15px 40px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+      }
+
+      .hero-header h1 {
+        font-size: 2.3rem;
+      }
+
+      .hero-header p {
+        font-size: 1rem;
+      }
+
+      .typing-text {
+        font-size: 1.2rem;
+        width: 180px;
+      }
+
+      .important-notice {
+        margin: 30px auto 20px;
+        padding: 18px 25px;
+        font-size: 0.95rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .important-notice::before {
+        font-size: 1.6rem;
+      }
+
+      #toggleMode {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+
+      .main-section {
+        margin: 40px auto;
+        padding: 0 15px;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+        margin-bottom: 35px;
+      }
+
+      .section-title::before {
+        font-size: 1.5rem;
+      }
+
+      .mock-test-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .card-item {
+        min-height: 140px;
+        padding: 16px 15px;
+      }
+
+      .card-item h3 {
+        font-size: 1.05rem;
+      }
+
+      .card-icon {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+      }
+      .card-item span {
+        font-size: 0.85rem;
+      }
+
+      #scrollToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-header {
+        padding: 50px 10px 30px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+
+      .hero-header h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero-header p {
+        font-size: 0.9rem;
+      }
+
+      .typing-text {
+        font-size: 1rem;
+        width: 160px;
+      }
+
+      .important-notice {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      #toggleMode {
+        margin-top: 15px;
+        margin-bottom: 20px;
+      }
+
+      .main-section {
+        margin: 30px auto;
+        padding: 0 10px;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .mock-test-grid {
+        gap: 15px;
+      }
+
+      .card-item {
+        min-height: 120px;
+        padding: 14px 12px;
+      }
+
+      .card-item h3 {
+        font-size: 0.95rem;
+      }
+
+      .card-icon {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+      }
+      .card-item span {
+        font-size: 0.8rem;
+      }
+
+      footer {
+        margin-top: 50px;
+        padding: 30px 10px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="container text-center">
-    <h2 class="mb-3">IBA STS Matriculation Category</h2>
-    <h5 class="text-success mb-4">Daily Updated Mock Tests – 100% Based on Latest Matric Syllabus</h5>
+  <header class="hero-header">
+    <div id="particles-js"></div> <h1 class="animate-in delay-1">IBA STS Mock Tests</h1>
+    <p class="animate-in delay-2">Matriculation Category – Elevate Your Exam Preparation!</p>
+    <p><span class="typing-text animate-in delay-3"></span></p>
+  </header>
 
-    <div class="alert alert-warning" role="alert">
-      All mock tests are password protected.<br>
-      For password, please contact on WhatsApp:<br>
-      <strong><a href="https://wa.me/923480358640" target="_blank">+923480358640</a></strong>
-    </div>
-
-    <p class="text-muted mb-4">Select a mock test to start:</p>
-
-    <a href="quiz1.html" class="btn btn-primary btn-test w-100">Mock Test 1</a>
-    <a href="quiz2.html" class="btn btn-primary btn-test w-100">Mock Test 2</a>
-    <a href="quiz3.html" class="btn btn-primary btn-test w-100">Mock Test 3 </a>
-    <a href="quiz4.html" class="btn btn-primary btn-test w-100">Mock Test 4</a>
-    <!-- New Update Link -->
-    <a href="matric-sample-paper.html" class="btn btn-warning btn-test w-100">
-      Official IBA STS Sample Paper (Matric)
-      <span class="blink-new">New</span>
-    </a>
-
-    <a href="quiz5.html" class="btn btn-primary btn-test w-100">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mock Test 5 <span class="blink-new">New UI/UX</span></a>
-    <a href="quiz6.html" class="btn btn-primary btn-test w-100">Mock Test 6</a>
-    <a href="quiz7.html" class="btn btn-primary btn-test w-100">Mock Test 7</a>
-    <a href="quiz8.html" class="btn btn-primary btn-test w-100">Mock Test 8</a>
-    <a href="quiz9.html" class="btn btn-primary btn-test w-100">Mock Test 9 <span class="blink-new">Naeemullah Mehar Mock Test</span></a>
-    <a href="quiz10.html" class="btn btn-primary btn-test w-100">Mock Test 10</a>
-
-    <p class="note mt-4">
-      Prepared for IBA STS Screening Test (Matric Level)<br>
-      Stay consistent, practice daily, and ace your exam!
-    </p>
+  <div class="important-notice animate-in delay-4">
+    <strong>IMPORTANT NOTICE:</strong> All mock tests are password protected. For password, please contact on WhatsApp:
+    <a href="https://wa.me/923480358640" target="_blank"><i class="fab fa-whatsapp"></i> +92 348 0358640</a>
   </div>
+
+  <div style="text-align: center;">
+    <button id="toggleMode" class="animate-in delay-5">
+      🌙 Dark Mode
+    </button>
+  </div>
+
+  <section class="main-section">
+    <h2 class="section-title animate-in delay-6">🎯 Select Your Mock Test</h2>
+    <div class="mock-test-grid">
+      <a href="quiz1.html" class="animate-in delay-7">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 1</h3>
+        </div>
+      </a>
+      <a href="quiz2.html" class="animate-in delay-8">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 2</h3>
+        </div>
+      </a>
+      <a href="quiz3.html" class="animate-in delay-9">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 3</h3>
+        </div>
+      </a>
+      <a href="quiz4.html" class="animate-in delay-10">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 4</h3>
+        </div>
+      </a>
+      <a href="matric-sample-paper.html" class="animate-in delay-11">
+        <div class="card-item card-official-sample">
+          <div class="card-icon">📚</div>
+          <h3>Official Sample Paper</h3>
+          <span class="badge-new">Must Attempt!</span>
+        </div>
+      </a>
+      <a href="quiz5.html" class="animate-in delay-12">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 5</h3>
+          <span class="badge-new">New UI/UX</span>
+        </div>
+      </a>
+      <a href="quiz6.html" class="animate-in delay-13">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 6</h3>
+        </div>
+      </a>
+      <a href="quiz7.html" class="animate-in delay-14">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 7</h3>
+        </div>
+      </a>
+      <a href="quiz8.html" class="animate-in delay-15">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 8</h3>
+        </div>
+      </a>
+      <a href="quiz9.html" class="animate-in delay-16">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 9</h3>
+          <span class="badge-new">Naeemullah Mehar Special</span>
+        </div>
+      </a>
+      <a href="quiz10.html" class="animate-in delay-17">
+        <div class="card-item">
+          <div class="card-icon">📚</div>
+          <h3>Mock Test 10</h3>
+          <span class="badge-new">New</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <button id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://chat.whatsapp.com/JsizrcizF4KBfprilR3EQP" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Group
+      </a>
+      <a href="https://whatsapp.com/channel/0029VbAoVyXHwXbBQ8pjlc1o" target="_blank">
+        <i class="fab fa-whatsapp-square"></i> WhatsApp Channel
+      </a>
+      <a href="https://facebook.com/mocktesthub" target="_blank">
+        <i class="fab fa-facebook-square"></i> Facebook Page
+      </a>
+      <a href="https://mock-test-hub.netlify.app/" target="_blank">
+        <i class="fas fa-globe"></i> Website
+      </a>
+    </div>
+    <br>
+    Prepared for IBA STS Screening Test (Matric Level)
+    <strong>"Success is the sum of small efforts, repeated day in and day out."</strong>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleMode');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      toggleBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+      localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    });
+
+    // Apply mode on load
+    if (localStorage.getItem('mode') === 'dark') {
+      document.body.classList.add('dark');
+      toggleBtn.innerHTML = '☀️ Light Mode';
+    } else {
+      toggleBtn.innerHTML = '🌙 Dark Mode';
+    }
+  </script>
+
+  <script>
+    const textArray = ["Prepare Smart", "Practice Daily", "Ace Your Exam!"];
+    let typingIndex = 0;
+    let charIndex = 0;
+    const typingElement = document.querySelector('.typing-text');
+
+    function typeText() {
+      if (!typingElement) return;
+      if (charIndex <= textArray[typingIndex].length) {
+        typingElement.textContent = textArray[typingIndex].substring(0, charIndex++);
+        setTimeout(typeText, 100);
+      } else {
+        setTimeout(() => eraseText(), 1200);
+      }
+    }
+
+    function eraseText() {
+      if (!typingElement) return;
+      if (charIndex >= 0) {
+        typingElement.textContent = textArray[typingIndex].substring(0, charIndex--);
+        setTimeout(eraseText, 50);
+      } else {
+        typingIndex = (typingIndex + 1) % textArray.length;
+        setTimeout(typeText, 300);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typingElement) typeText();
+    });
+  </script>
+
+  <script>
+    // Get the button
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+        scrollToTopBtn.style.opacity = "1";
+      } else {
+        scrollToTopBtn.style.opacity = "0";
+        // Optional: Hide after transition to prevent interaction during fade-out
+        setTimeout(() => {
+          if (scrollToTopBtn.style.opacity === "0") {
+            scrollToTopBtn.style.display = "none";
+          }
+        }, 300); // Match CSS transition duration
+      }
+    };
+
+    // When the user clicks on the button, scroll to the top of the document
+    scrollToTopBtn.addEventListener("click", function() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+  <script>
+    // Confetti effect for the Official Sample Paper card
+    const officialSampleCard = document.querySelector('.card-official-sample');
+    let confettiInterval;
+
+    function getRandomConfettiColor() {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const colors = [
+        rootStyles.getPropertyValue('--primary-blue').trim(),
+        rootStyles.getPropertyValue('--secondary-blue').trim(),
+        rootStyles.getPropertyValue('--accent-green').trim(),
+        rootStyles.getPropertyValue('--accent-orange').trim(),
+        '#ffffff' // Always include white
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function createConfetti(x, y) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.position = 'fixed'; // Fixed to viewport
+      confetti.style.left = `${x}px`;
+      confetti.style.top = `${y}px`;
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.backgroundColor = getRandomConfettiColor();
+      confetti.style.borderRadius = '50%'; // Make it round or square
+      confetti.style.opacity = '0.8';
+      confetti.style.pointerEvents = 'none'; // Don't block clicks
+      confetti.style.zIndex = '9999'; // On top of everything
+
+      document.body.appendChild(confetti);
+
+      const angle = Math.random() * Math.PI * 2; // Random direction
+      const velocity = Math.random() * 5 + 5; // Random velocity
+      const rotation = Math.random() * 360; // Initial rotation
+
+      confetti.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+      let startTime = null;
+
+      function animateConfetti(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = (currentTime - startTime) / 1500; // Animation duration 1.5s
+
+        if (progress < 1) {
+          const currentX = x + velocity * Math.cos(angle) * progress * 60;
+          const currentY = y + velocity * Math.sin(angle) * progress * 60 + progress * progress * 100; // Add gravity
+          const currentOpacity = 0.8 * (1 - progress);
+          const currentRotation = rotation + progress * 720; // Spin twice
+
+          confetti.style.left = `${currentX}px`;
+          confetti.style.top = `${currentY}px`;
+          confetti.style.opacity = currentOpacity;
+          confetti.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+
+          requestAnimationFrame(animateConfetti);
+        } else {
+          confetti.remove();
+        }
+      }
+
+      requestAnimationFrame(animateConfetti);
+    }
+
+    if (officialSampleCard) {
+      officialSampleCard.addEventListener('mouseenter', (e) => {
+        // Get the center of the card
+        const rect = officialSampleCard.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Burst initially
+        for (let i = 0; i < 20; i++) {
+          createConfetti(centerX, centerY);
+        }
+
+        // Continuous confetti while hovered (optional, can be removed for just a burst)
+        confettiInterval = setInterval(() => {
+          for (let i = 0; i < 5; i++) {
+            createConfetti(centerX, centerY);
+          }
+        }, 100);
+      });
+
+      officialSampleCard.addEventListener('mouseleave', () => {
+        clearInterval(confettiInterval);
+      });
+    }
+  </script>
+
+  <script>
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.6,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 6, // Increased particle size
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.5, // Adjusted for larger particles
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 
 </html>
