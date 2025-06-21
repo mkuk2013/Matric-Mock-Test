@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -57,74 +55,130 @@
       font-size: 0.95rem;
       margin-top: 10px;
     }
-  
-.passage-glass {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 12px;
-  color: #000;
-  margin: 10px 0;
-  font-size: 0.95rem;
-}
-
-
-.dark-mode #english-passage,
-.dark-mode #english-passage pre {
-  color: white !important;
-}
-
-
-  @media (max-width: 768px) {
-    .glass-card {
-      padding: 20px;
-      margin-top: 30px;
-    }
-    #quizHeading, h2, h5 {
-      font-size: 1.2rem;
-    }
-    .option {
+    .passage-glass {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 12px;
+      color: #000;
+      margin: 10px 0;
       font-size: 0.95rem;
-      padding: 8px;
     }
-    .btn {
-      font-size: 0.9rem;
+    .dark-mode #english-passage,
+    .dark-mode #english-passage pre {
+      color: white !important;
     }
-    #english-passage {
-      font-size: 0.9rem !important;
+    @media (max-width: 768px) {
+      .glass-card {
+        padding: 20px;
+        margin-top: 30px;
+      }
+      #quizHeading, h2, h5 {
+        font-size: 1.2rem;
+      }
+      .option {
+        font-size: 0.95rem;
+        padding: 8px;
+      }
+      .btn {
+        font-size: 0.9rem;
+      }
+      #english-passage {
+        font-size: 0.9rem !important;
+      }
     }
-  }
-
-  @media (max-width: 768px) {
-    .sticky-controls {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(5px);
+    @media (max-width: 768px) {
+      .sticky-controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        z-index: 999;
+        border-top: 1px solid #ccc;
+      }
+      .sticky-controls button {
+        flex: 1;
+        margin: 0 5px;
+      }
+      #quizContent {
+        padding-bottom: 80px; /* extra space for sticky buttons */
+      }
+    }
+    /* Styles for the Question Palette */
+    #question-palette {
       display: flex;
-      justify-content: space-around;
-      padding: 10px;
-      z-index: 999;
-      border-top: 1px solid #ccc;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(240, 240, 240, 0.7);
+      border-radius: 8px;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.1);
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
-    .sticky-controls button {
-      flex: 1;
-      margin: 0 5px;
+    .dark-mode #question-palette {
+      background-color: rgba(51, 51, 51, 0.7);
+      box-shadow: inset 0 0 8px rgba(255,255,255,0.1);
     }
-    #quizContent {
-      padding-bottom: 80px; /* extra space for sticky buttons */
+    .palette-btn {
+      flex: 0 0 auto;
+      width: 45px;
+      padding: 10px 5px;
+      background-color: rgba(224, 224, 224, 0.8);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #333;
+      text-align: center;
     }
-  }
+    .dark-mode .palette-btn {
+      background-color: rgba(85, 85, 85, 0.8);
+      border: 1px solid #777;
+      color: #eee;
+    }
+    .palette-btn:hover {
+      background-color: #c0c0c0;
+      border-color: #999;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .dark-mode .palette-btn:hover {
+      background-color: #666;
+      border-color: #aaa;
+    }
+    .palette-btn.answered {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+    .dark-mode .palette-btn.answered {
+      background-color: #2e6f47;
+      border-color: #28a745;
+      color: #d4edda;
+    }
+    .palette-btn.current {
+      background-color: #007bff;
+      border-color: #0056b3;
+      color: white;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+    .dark-mode .palette-btn.current {
+      background-color: #0056b3;
+      border-color: #003e80;
+    }
 </style>
-
-
 </head>
 <body>
-<!-- English Glass Passage -->
-<!-- English Passage -->
 <div class="container">
 <div class="glass-card" id="quizContainer">
 <h2 class="text-center mb-4" id="quizHeading">🔒 Enter Password to Begin Today's Paper (21-06-2025) Matric Category</h2>
@@ -137,15 +191,16 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
 <span><strong>⏱ Time Left: <span id="timerDisplay">60:00</span></strong></span>
 <button class="btn btn-outline-light btn-sm" id="modeToggle" onclick="toggleDarkMode()">🌗 Dark Mode</button>
-</div><div id="english-passage" style="display: none; margin: 20px auto; padding: 20px; border-radius: 15px;backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.2);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);max-width: 1200px; font-size: 16px; color: #000;">
+</div>
+<div id="english-passage" style="display: none; margin: 20px auto; padding: 20px; border-radius: 15px;backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.2);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);max-width: 1200px; font-size: 16px; color: #000;">
 <strong>Read the Passage and answer the Questions at the end.</strong><br/>
 <pre style="white-space: pre-wrap;">
 The most important features of the Indus Valley civilization are town planning and architecture. The cities of the Indus Valley civilization were very well planned. Each city was planned in a grid-like pattern, formed by straight roads running from North to South and East to West. This divided the city into blocks. The main streets were ten (10) meters wide, so two bullock carts could pass by each other. The houses were built of thick walls of baked bricks. The bricks were joined together with mud, gypsum and lime mortar. The architecture of the Indus civilization was very advanced. There were well-designed dockyards, well-built granaries, large warehouses, well-aligned brick platforms and impenetrable protective walls. The massive walls of Indus cities most likely protected them from floods and invaders.
 </pre>
-
 </div>
 <div id="questionBox"></div>
 <ul class="list-group" id="optionList"></ul>
+<div id="question-palette" class="mb-4"></div>
 <div class="mt-3">
 <button class="btn btn-light me-2" onclick="prevQuestion()">Previous</button>
 <button class="btn btn-success" onclick="submitAnswer()">Next</button>
@@ -161,23 +216,19 @@ The most important features of the Indus Valley civilization are town planning a
 <p><strong>Score:</strong> <span id="finalScore"></span>/100</p>
 <p><strong>Time Taken:</strong> <span id="finalTime"></span></p>
 <button class="btn btn-info mb-3" onclick="printResult()">🖨 Print Result</button>
-     
-    <button class="btn btn-warning mb-3" onclick="restartQuiz()">🔁 Restart Quiz</button>
+<button class="btn btn-warning mb-3" onclick="restartQuiz()">🔁 Restart Quiz</button>
 <hr/>
 <div id="answerReview"></div>
 </div>
 </div>
+<div class="sticky-controls d-md-none">
+<button class="btn btn-outline-secondary" onclick="prevQuestion()">⬅️ Previous</button>
+<button class="btn btn-outline-success" onclick="submitAnswer()">Next ➡️</button>
+</div>
 <script>
 const correctPasswordHash = "4b911ed9f6ddcaa0185748e7a967da966472fc62d69c27e748018b6d2cef6fea";
-
-  
-const quizData = [];
-
-
-quizData.push(
-
-
- {
+const quizData = [
+    {
       "question": "The similar meaning of the word 'architecture' is:",
       "option": ["Infrastructure", "Discipline", "Intense", "Structureless"],
       "correct": 0
@@ -218,7 +269,7 @@ quizData.push(
       "correct": 3
     },
     {
-      "question": "The grid had straight roads, running from North to South and:",
+      "question": "The grid had straight roads running from North to South and:",
       "option": ["West to East", "East to West", "West to North", "East to East"],
       "correct": 1
     },
@@ -303,27 +354,27 @@ quizData.push(
       "correct": 0
     },
     {
-      "question": "Ali and Abdullah have decide to go to the nearby park.",
+      "question": "Ali and Abdullah have decided to go to the nearby park. This sentence is an example of:",
       "option": ["Control", "Structure", "Conditional", "Query"],
       "correct": 1
     },
     {
-      "question": "This shirt is yours and that is my.",
+      "question": "This shirt is yours and that is mine. This sentence is an example of:",
       "option": ["Control", "Structure", "Conditional", "Query"],
       "correct": 1
     },
     {
-      "question": "On weekends, they usually went to the nearby canal for fishing.",
+      "question": "On weekends, they usually went to the nearby canal for fishing. This sentence is an example of:",
       "option": ["Control", "Structure", "Conditional", "Query"],
       "correct": 1
     },
     {
-      "question": "I have always looked for ways to get things done in time.",
+      "question": "I have always looked for ways to get things done in time. This sentence is an example of:",
       "option": ["Control", "Structure", "Conditional", "Query"],
       "correct": 1
     },
     {
-      "question": "We should treat the young and old with kindment.",
+      "question": "We should treat the young and old with kindness. This sentence is an example of:",
       "option": ["Control", "Structure", "Conditional", "Query"],
       "correct": 1
     },
@@ -368,9 +419,9 @@ quizData.push(
       "correct": 3
     },
     {
-      "question": "Select the correct punctuation for this sentence:",
-      "option": ["He asked if I was going", "He asked if I was going.", "He asked", "if I was going.", "He asked: if I was going."],
-      "correct": 1
+      "question": "Select the correct punctuation for this sentence: He asked if I was going",
+      "option": ["He asked if I was going,", "He asked, if I was going.", "He asked if I was going.", "He asked: if I was going."],
+      "correct": 2
     },
     {
       "question": "Select the proper prefix for the word 'agreement':",
@@ -389,10 +440,12 @@ quizData.push(
     },
     {
       "question": "The correct order for operations in BODMAS:",
-      "option": ["Addition, Multiplication, Division, Brackets, Subtraction,Order", 
-                  "Brackets, Order, Division,Multiplication,Addition,Subtraction",
-                  "Brackets, Order, Multiplication, Division, Addition, Subtraction",
-                  "Brackets, Division, Order, Multiplication, Addition, Subtraction"],
+      "option": [
+        "Addition, Multiplication, Division, Brackets, Subtraction, Order",
+        "Brackets, Order, Division, Multiplication, Addition, Subtraction",
+        "Brackets, Order, Multiplication, Division, Addition, Subtraction",
+        "Brackets, Division, Order, Multiplication, Addition, Subtraction"
+      ],
       "correct": 1
     },
     {
@@ -412,12 +465,12 @@ quizData.push(
     },
     {
       "question": "If X = {3, 4, 5, 6} and Y = {1, 2, 3, 8} then X ∪ Y is:",
-      "option": "{1, 2, 3, 4, 5, 6}, {1, 2, 3, 4, 8}, {3}, {1, 2, 3, 4, 5, 6, 8}",
+      "option": ["{1, 2, 3, 4, 5, 6}", "{1, 2, 3, 4, 8}", "{3}", "{1, 2, 3, 4, 5, 6, 8}"],
       "correct": 3
     },
     {
       "question": "If U = {1, 2, 3, 4, 5, 6, 7, 8} and B = {2, 4, 6, 8}, B' is:",
-      "option": "{1, 2}, {1, 3, 5, 7}, {1, 3, 5, 7}, {2, 4, 6, 8}",
+      "option": ["{1, 2}", "{1, 3, 5, 7}", "{2, 4, 6, 8}", "{1, 3, 5}"],
       "correct": 1
     },
     {
@@ -427,11 +480,11 @@ quizData.push(
     },
     {
       "question": "Tabular form of A = {x: x ∈ Z ∧ x² = 25} is:",
-      "option": "{1, 5}, {-5, 5}, {1, 5, 25}, {-5}",
+      "option": ["{1, 5}", "{-5, 5}", "{1, 5, 25}", "{-5}"],
       "correct": 1
     },
     {
-      "question": "If 1 two is added to the greatest five-digit number, the number will be:",
+      "question": "If 1 is added to the greatest five-digit number, the number will be:",
       "option": ["1 less than the greatest six-digit number", "1 less than the smallest six-digit number", "1 more than the greatest six-digit number", "1 more than the smallest six-digit number"],
       "correct": 3
     },
@@ -441,7 +494,7 @@ quizData.push(
       "correct": 0
     },
     {
-      "question": "The reasoning in which we generalized the statement is known as:",
+      "question": "The reasoning in which we generalize the statement is known as:",
       "option": ["Inductive reasoning", "Conversion reasoning", "Deductive reasoning", "Quantitative reasoning"],
       "correct": 0
     },
@@ -451,7 +504,7 @@ quizData.push(
       "correct": 0
     },
     {
-      "question": "Three or more points lies on the same straight line are known as:",
+      "question": "Three or more points that lie on the same straight line are known as:",
       "option": ["Collinear points", "Non-collinear points", "Intersection points", "Meeting points"],
       "correct": 0
     },
@@ -471,14 +524,14 @@ quizData.push(
       "correct": 2
     },
     {
-      "question": "If six people dig a well 200m deep in 15 days, the number of people that are required to dig the same well in 18 days is:",
+      "question": "If six people dig a well 200m deep in 15 days, the number of people required to dig the same well in 18 days is:",
       "option": ["5", "15", "25", "45"],
       "correct": 0
     },
     {
       "question": "Sana's school is 9m in the north, and the market is 12m in the east of her home. The distance between the school and the market is:",
       "option": ["3", "10", "15", "21"],
-      "correct": 1
+      "correct": 2
     },
     {
       "question": "Amoeba is a/an:",
@@ -587,7 +640,7 @@ quizData.push(
     },
     {
       "question": "Every algorithm has a:",
-      "option": ["Loop Condition", "Start", "Stop", "Finite", "Infinite Loops", "Sequence", "Conditions"],
+      "option": ["Loop Condition", "Start and Stop", "Infinite Loops", "Sequence"],
       "correct": 1
     },
     {
@@ -607,8 +660,8 @@ quizData.push(
     },
     {
       "question": "You want to add audio video file in an HTML document using the tag:",
-      "option": ["<embed>", "<audio>", "<video>", "<mp4>"],
-      "correct": 1
+      "option": ["< embed >", "< audio >", "< video >", "< mp4 >"],
+      "correct": 2
     },
     {
       "question": "Second Generation Computers use which technology:",
@@ -680,25 +733,19 @@ quizData.push(
       "option": ["To increase military power", "To expand world trade", "To prevent future wars and promote peace", "To divide territories"],
       "correct": 2
     }
-
-  );
-
-
-// export removed for browser compatibility
-
+];
 let currentQuestion = 0;
 let score = 0;
 let userAnswers = [];
 let startTime = Date.now();
 let timeLeft = 3600;
-
+const questionPalette = document.getElementById("question-palette");
 async function sha256(text) {
   const encoder = new TextEncoder();
   const data = encoder.encode(text);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
   return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
-
 async function verifyPassword() {
   const input = document.getElementById("passwordInput").value;
   const hash = await sha256(input);
@@ -707,19 +754,37 @@ async function verifyPassword() {
     document.querySelector(".input-group").style.display = "none";
     document.getElementById("quizHeading").style.display = "none";
     showQuestion();
+    renderQuestionPalette();
     startTimer();
   } else {
     alert("Incorrect password!");
   }
 }
-
 document.getElementById("startBtn").addEventListener("click", verifyPassword);
-
+function renderQuestionPalette() {
+  questionPalette.innerHTML = '';
+  quizData.forEach((q, index) => {
+    const button = document.createElement('button');
+    button.classList.add('palette-btn');
+    button.textContent = index + 1;
+    button.onclick = () => {
+      currentQuestion = index;
+      showQuestion();
+    };
+    if (userAnswers[index] !== undefined) {
+      button.classList.add('answered');
+    }
+    if (index === currentQuestion) {
+      button.classList.add('current');
+    }
+    questionPalette.appendChild(button);
+  });
+}
 function showQuestion() {
   const passage = document.getElementById("english-passage");
-if (passage) {
-  passage.style.display = (currentQuestion >= 0 && currentQuestion <= 9) ? "block" : "none";
-}
+  if (passage) {
+    passage.style.display = (currentQuestion >= 0 && currentQuestion <= 9) ? "block" : "none";
+  }
   const q = quizData[currentQuestion];
   document.getElementById("questionBox").innerHTML = `<h5>Q${currentQuestion + 1}: ${q.question}</h5>`;
   const list = document.getElementById("optionList");
@@ -731,33 +796,52 @@ if (passage) {
     list.appendChild(li);
   });
   document.getElementById("progressText").innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+  if (userAnswers[currentQuestion] !== undefined) {
+    const radioBtn = document.querySelector(`input[name='option'][value='${userAnswers[currentQuestion]}']`);
+    if (radioBtn) {
+      radioBtn.checked = true;
+    }
+  }
+  renderQuestionPalette();
 }
-
 function submitAnswer() {
   const selected = document.querySelector('input[name="option"]:checked');
   if (!selected) return alert("Please select an option.");
   const selectedIndex = parseInt(selected.value);
-  userAnswers.push(selectedIndex);
-  if (selectedIndex === quizData[currentQuestion].correct) score++;
+  userAnswers[currentQuestion] = selectedIndex;
   currentQuestion++;
-  if (currentQuestion < quizData.length) showQuestion();
-  else finishTest();
+  if (currentQuestion < quizData.length) {
+    showQuestion();
+  } else {
+    finishTest();
+  }
 }
-
 function prevQuestion() {
   if (currentQuestion > 0) {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (selected) {
+      userAnswers[currentQuestion] = parseInt(selected.value);
+    }
     currentQuestion--;
     showQuestion();
   }
 }
-
 function finishTest() {
+  const selected = document.querySelector('input[name="option"]:checked');
+  if (selected) {
+    userAnswers[currentQuestion] = parseInt(selected.value);
+  }
   document.getElementById("quizContainer").style.display = "none";
   document.getElementById("resultContainer").style.display = "block";
   const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+  score = 0;
+  quizData.forEach((q, i) => {
+    if (userAnswers[i] !== undefined && userAnswers[i] === q.correct) {
+      score++;
+    }
+  });
   document.getElementById("finalScore").innerText = score;
   document.getElementById("finalTime").innerText = `${Math.floor(timeTaken/60)}m ${timeTaken%60}s`;
-
   const review = document.getElementById("answerReview");
   review.innerHTML = '<h4>📝 Answer Review:</h4>';
   quizData.forEach((q, i) => {
@@ -776,16 +860,15 @@ function finishTest() {
       }
       return `<li class="list-group-item ${className}">${opt} ${label ? `<span class='ms-2 fw-bold'>${label}</span>` : ''}</li>`;
     }).join('');
-    review.innerHTML += `<div class='mb-4'><h6>Q${i+1}: ${q.question}</h6><ul class='list-group'>${optionsHTML}</ul></div>`;
+    const noAnswerText = userAns === undefined ? "<li class='list-group-item wrong'>No Answer provided</li>" : "";
+    review.innerHTML += `<div class='mb-4'><h6>Q${i+1}: ${q.question}</h6><ul class='list-group'>${optionsHTML}${noAnswerText}</ul></div>`;
   });
 }
-
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   const modeBtn = document.getElementById("modeToggle");
   modeBtn.innerHTML = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌗 Dark Mode";
 }
-
 function startTimer() {
   const display = document.getElementById("timerDisplay");
   const bar = document.getElementById("timeBar");
@@ -802,36 +885,24 @@ function startTimer() {
     }
   }, 1000);
 }
-
 function printResult() {
   window.print();
 }
-
 function restartQuiz() {
   location.reload();
 }
-
-// Swipe Gesture Support
 let touchStartX = null;
 document.addEventListener('touchstart', e => {
   touchStartX = e.changedTouches[0].screenX;
 }, false);
-
 document.addEventListener('touchend', e => {
   if (!touchStartX) return;
   let touchEndX = e.changedTouches[0].screenX;
   let deltaX = touchEndX - touchStartX;
-  if (deltaX > 50) prevQuestion();     // swipe right
-  else if (deltaX < -50) submitAnswer(); // swipe left
+  if (deltaX > 50) prevQuestion();
+  else if (deltaX < -50) submitAnswer();
   touchStartX = null;
 }, false);
 </script>
-
-
-<div class="sticky-controls d-md-none">
-  <button class="btn btn-outline-secondary" onclick="prevQuestion()">⬅️ Previous</button>
-  <button class="btn btn-outline-success" onclick="submitAnswer()">Next ➡️</button>
-</div>
 </body>
-
 </html>
