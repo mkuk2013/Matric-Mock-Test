@@ -1,539 +1,510 @@
-const quizData = [];
 
-// English Section
-const englishPassage = "A close look at the facts relating to political interference in administration shows that it is not a one-way process. There is often a nexus between power-hungry and corrupt politicians and civil servants with convenient principles. Many civil servants are only too anxious to oblige the politicians, and then cash the obligation when they need some special favour. So the attitude of self-righteousness adopted by the civil service is sometimes only a way of covering their own flaws by blaming others. Every now and then some retired civil servants come out with his memoirs, painting a glorious picture of the heights of administrative efficiency reached during his reign. There is often the suggestion that had there not been so much political interference, things would have been even more fantastic. It is not unusual for the self-styled hero to blame not only interfering politicians but also fellow civil servants who were idiots or crooks, for his failures. This attitude of smug self-satisfaction is, unfortunately, developed during the years of service. Self-preservation rather than service is encouraged by our whole system of rules and procedures. The remedy has to be drastic and quickly effective. The over-protection now granted to civil servants must end. Today to remove an erring civil servant is just not possible. And the only thing that the highest authority in the Government, both in the State and at the Centre, can do is to transfer an official from one job to another. The rules for taking disciplinary action are so complicated that, in the end, the defaulting civil servant gets away, and gets his full emoluments even for the period of the disciplinary proceedings, thus making it a paid holiday for him. The result is that the administration has become rule-oriented and not result-oriented. Action is possible against the official who takes some initiative in his work, but no action is ever taken against a person who does not deliver the goods. If the country is to adopt a result-oriented approach, it is necessary to link job performance with job retention.";
-
-quizData.push(
-  {
-    question: "The facts relating to the problem of political interference indicate that",
-    option: ["He was a national poet", "He built roads", "He led the army", "He developed the nuclear program"],
-    correct: 3
-  },
-  {
-    question: "The word 'renowned' in the passage means:",
-    option: ["Unknown", "Famous", "Poor", "Ordinary"],
-    correct: 1
-  },
-  {
-    question: "The opposite of 'achievement' is:",
-    option: ["Victory", "Failure", "Effort", "Strength"],
-    correct: 1
-  },
-  {
-    question: "What is the correct tense of the verb 'migrated'?",
-    option: ["Present", "Future", "Past", "Continuous"],
-    correct: 2
-  },
-  {
-    question: "Which part of speech is the word 'successfully'?",
-    option: ["Verb", "Noun", "Adjective", "Adverb"],
-    correct: 3
-  },
-  {
-    question: "Choose the correct synonym of the word 'dedicated':",
-    option: ["Lazy", "Loyal", "Weak", "Careless"],
-    correct: 1
-  },
-  {
-    question: "Where did Pakistan carry out its nuclear tests?",
-    option: ["Karachi", "Lahore", "Chagai", "Peshawar"],
-    correct: 2
-  },
-  {
-    question: "What does the word 'controversy' mean as used in the passage?",
-    option: ["Agreement", "Argument or dispute", "Celebration", "Discovery"],
-    correct: 1
-  },
-  {
-    question: "Fill in the blank: Dr. Khan was _____ intelligent and patriotic scientist.",
-    option: ["a", "an", "the", "no article needed"],
-    correct: 1
-  },
-  {
-    question: "What is the correct plural of 'institution'?",
-    option: ["Institutions", "Institutiones", "Institutionz", "Institution's"],
-    correct: 0
-  }
-);
-
-
-// Math Section
-quizData.push(
-  {
-    question: "What is the sum of the interior angles of a triangle?",
-    option: ["360 degrees", "90 degrees", "180 degrees", "270 degrees"],
-    correct: 2
-  },
-  {
-    question: "What is the measure of each angle in a square?",
-    option: ["45 degrees", "60 degrees", "90 degrees", "120 degrees"],
-    correct: 2
-  },
-  {
-    question: "What is 8 multiplied by 7?",
-    option: ["54", "56", "58", "64"],
-    correct: 1
-  },
-  {
-    question: "Which of the following is a prime number?",
-    option: ["4", "6", "9", "11"],
-    correct: 3
-  },
-  {
-    question: "Find the average of 4, 8, and 12.",
-    option: ["8", "9", "10", "6"],
-    correct: 0
-  },
-  {
-    question: "How many degrees are in a right angle?",
-    option: ["45", "60", "90", "180"],
-    correct: 2
-  },
-  {
-    question: "Which of the following is an even number?",
-    option: ["7", "13", "22", "19"],
-    correct: 2
-  },
-  {
-    question: "What is 1/2 + 1/4?",
-    option: ["3/4", "1/3", "2/6", "1/6"],
-    correct: 0
-  },
-  {
-    question: "What is the perimeter of a rectangle with length 6 and width 4?",
-    option: ["20", "24", "18", "12"],
-    correct: 0
-  },
-  {
-    question: "How many faces does a cube have?",
-    option: ["4", "6", "8", "12"],
-    correct: 1
-  }
-);
-// Science Section
-quizData.push(
-  {
-    question: "Which part of the plant conducts photosynthesis?",
-    option: ["Root", "Stem", "Leaf", "Flower"],
-    correct: 2
-  },
-  {
-    question: "Which organ is responsible for pumping blood in the human body?",
-    option: ["Lungs", "Brain", "Liver", "Heart"],
-    correct: 3
-  },
-  {
-    question: "Which gas do plants absorb from the atmosphere?",
-    option: ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"],
-    correct: 1
-  },
-  {
-    question: "What is the boiling point of water in Celsius?",
-    option: ["90°C", "80°C", "100°C", "70°C"],
-    correct: 2
-  },
-  {
-    question: "Which planet is known as the Red Planet?",
-    option: ["Earth", "Venus", "Mars", "Jupiter"],
-    correct: 2
-  },
-  {
-    question: "What is H2O commonly known as?",
-    option: ["Hydrogen", "Water", "Oxygen", "Salt"],
-    correct: 1
-  },
-  {
-    question: "What is the source of energy for the Earth?",
-    option: ["Moon", "Stars", "Sun", "Fire"],
-    correct: 2
-  },
-  {
-    question: "Which system controls the human body through nerves?",
-    option: ["Circulatory system", "Respiratory system", "Digestive system", "Nervous system"],
-    correct: 3
-  },
-  {
-    question: "What is the smallest unit of life?",
-    option: ["Tissue", "Organ", "Cell", "Atom"],
-    correct: 2
-  },
-  {
-    question: "Which vitamin is produced when skin is exposed to sunlight?",
-    option: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin B"],
-    correct: 2
-  }
-);
-
-// Islamiat & Pakistan Studies Section
-quizData.push(
-  {
-    question: "Who was the last Prophet of Islam?",
-    option: ["Hazrat Isa (A.S)", "Hazrat Musa (A.S)", "Hazrat Muhammad (S.A.W)", "Hazrat Ibrahim (A.S)"],
-    correct: 2
-  },
-  {
-    question: "What is the name of the Holy book of Muslims?",
-    option: ["Torah", "Bible", "Zabur", "Quran"],
-    correct: 3
-  },
-  {
-    question: "How many times Muslims offer prayer in a day?",
-    option: ["3", "4", "5", "6"],
-    correct: 2
-  },
-  {
-    question: "Which city is called the City of Prophets?",
-    option: ["Makkah", "Madina", "Jerusalem", "Baghdad"],
-    correct: 2
-  },
-  {
-    question: "What is the name of the first month of Islamic calendar?",
-    option: ["Ramadan", "Safar", "Muharram", "Zilhajj"],
-    correct: 2
-  },
-  {
-    question: "Who is the founder of Pakistan?",
-    option: ["Allama Iqbal", "Liaquat Ali Khan", "Quaid-e-Azam", "Sir Syed Ahmed"],
-    correct: 2
-  },
-  {
-    question: "When did Pakistan come into being?",
-    option: ["14 August 1947", "15 August 1948", "23 March 1940", "26 January 1950"],
-    correct: 0
-  },
-  {
-    question: "Which city is the capital of Pakistan?",
-    option: ["Lahore", "Islamabad", "Karachi", "Quetta"],
-    correct: 1
-  },
-  {
-    question: "Which river is the longest in Pakistan?",
-    option: ["River Ravi", "River Indus", "River Jhelum", "River Chenab"],
-    correct: 1
-  },
-  {
-    question: "What is the national language of Pakistan?",
-    option: ["English", "Punjabi", "Urdu", "Sindhi"],
-    correct: 2
-  }
-);
-// General Knowledge & Current Affairs Section
-quizData.push(
-  {
-    question: "Which country is known as the Land of the Rising Sun?",
-    option: ["China", "Japan", "Thailand", "South Korea"],
-    correct: 1
-  },
-  {
-    question: "How many continents are there in the world?",
-    option: ["5", "6", "7", "8"],
-    correct: 2
-  },
-  {
-    question: "Which is the largest ocean on Earth?",
-    option: ["Atlantic", "Indian", "Arctic", "Pacific"],
-    correct: 3
-  },
-  {
-    question: "Which planet is closest to the Sun?",
-    option: ["Venus", "Earth", "Mercury", "Mars"],
-    correct: 2
-  },
-  {
-    question: "Who wrote the national anthem of Pakistan?",
-    option: ["Allama Iqbal", "Hafeez Jullundhri", "Ahmad Faraz", "Faiz Ahmed Faiz"],
-    correct: 1
-  },
-  {
-    question: "Which currency is used in Japan?",
-    option: ["Won", "Yuan", "Dollar", "Yen"],
-    correct: 3
-  },
-  {
-    question: "Which gas is most abundant in the Earth's atmosphere?",
-    option: ["Oxygen", "Hydrogen", "Nitrogen", "Carbon Dioxide"],
-    correct: 2
-  },
-  {
-    question: "Which country hosted the FIFA World Cup 2022?",
-    option: ["Qatar", "Russia", "USA", "France"],
-    correct: 0
-  },
-  {
-    question: "In which year did man first land on the moon?",
-    option: ["1965", "1969", "1971", "1975"],
-    correct: 1
-  },
-  {
-    question: "What is the capital of the United Kingdom?",
-    option: ["Manchester", "London", "Liverpool", "Birmingham"],
-    correct: 1
-  }
-);
-// Technology & Computer Section
-quizData.push(
-  {
-    question: "What does CPU stand for?",
-    option: ["Central Processing Unit", "Computer Power Unit", "Central Printing Unit", "Control Processing Unit"],
-    correct: 0
-  },
-  {
-    question: "Which device is used to input data into a computer?",
-    option: ["Monitor", "Keyboard", "Printer", "Speaker"],
-    correct: 1
-  },
-  {
-    question: "Which of the following is an output device?",
-    option: ["Mouse", "Scanner", "Monitor", "Microphone"],
-    correct: 2
-  },
-  {
-    question: "What is the brain of the computer called?",
-    option: ["RAM", "CPU", "Hard Drive", "Motherboard"],
-    correct: 1
-  },
-  {
-    question: "Which key is used to delete characters to the left of the cursor?",
-    option: ["Delete", "Shift", "Backspace", "Esc"],
-    correct: 2
-  },
-  {
-    question: "Which of these is a type of software?",
-    option: ["CPU", "Mouse", "Microsoft Word", "Monitor"],
-    correct: 2
-  },
-  {
-    question: "What does 'www' stand for in a website browser?",
-    option: ["Web World Work", "World Wide Web", "Web Wide World", "World Work Web"],
-    correct: 1
-  },
-  {
-    question: "Which part of the computer stores data permanently?",
-    option: ["RAM", "CPU", "Hard Drive", "ROM"],
-    correct: 2
-  },
-  {
-    question: "Which of the following is used for communication over long distances?",
-    option: ["Keyboard", "Modem", "Monitor", "USB"],
-    correct: 1
-  },
-  {
-    question: "Which of these is not an operating system?",
-    option: ["Linux", "Windows", "Chrome", "Android"],
-    correct: 2
-  }
-);// IQ & Analytical Reasoning Section
-quizData.push(
-  {
-    question: "What comes next in the sequence: 2, 4, 6, 8, ?",
-    option: ["9", "10", "11", "12"],
-    correct: 1
-  },
-  {
-    question: "If A = 1, B = 2, C = 3, what does D + E equal?",
-    option: ["5", "6", "7", "8"],
-    correct: 2
-  },
-  {
-    question: "Which number is the odd one out: 11, 13, 15, 17, 19?",
-    option: ["11", "13", "15", "17"],
-    correct: 2
-  },
-  {
-    question: "If you rearrange the letters 'CIFAIPC' you get the name of a:",
-    option: ["Country", "City", "Continent", "Ocean"],
-    correct: 0
-  },
-  {
-    question: "What comes next in the series: J, F, M, A, M, J, ?",
-    option: ["J", "K", "L", "N"],
-    correct: 0
-  },
-  {
-    question: "If 5 pens cost Rs. 25, how much do 10 pens cost?",
-    option: ["Rs. 30", "Rs. 50", "Rs. 35", "Rs. 45"],
-    correct: 1
-  },
-  {
-    question: "Ali is older than Sara. Sara is older than Umar. Who is the youngest?",
-    option: ["Ali", "Sara", "Umar", "Can't say"],
-    correct: 2
-  },
-  {
-    question: "Which shape has no corners?",
-    option: ["Square", "Rectangle", "Triangle", "Circle"],
-    correct: 3
-  },
-  {
-    question: "If it is 3 PM now, what time will it be in 5 hours?",
-    option: ["7 PM", "8 PM", "6 PM", "5 PM"],
-    correct: 1
-  },
-  {
-    question: "If 2 + 2 = 4, and 3 + 3 = 6, then 4 + 4 = ?",
-    option: ["6", "7", "8", "9"],
-    correct: 2
-  }
-);
-// Islamic Ethics & Values Section
-quizData.push(
-  {
-    question: "What is the meaning of 'Akhlaq' in Islam?",
-    option: ["Wealth", "Behavior", "Prayer", "Knowledge"],
-    correct: 1
-  },
-  {
-    question: "Islam encourages Muslims to speak the:",
-    option: ["Truth", "Lie", "Gossip", "Flattery"],
-    correct: 0
-  },
-  {
-    question: "Helping others in need is a form of:",
-    option: ["Greed", "Patience", "Sadaqah", "Pride"],
-    correct: 2
-  },
-  {
-    question: "Which characteristic was most known in the Prophet Muhammad (S.A.W)?",
-    option: ["Greed", "Anger", "Truthfulness", "Laziness"],
-    correct: 2
-  },
-  {
-    question: "Islam teaches us to respect:",
-    option: ["Only elders", "Only teachers", "Everyone", "Only family"],
-    correct: 2
-  },
-  {
-    question: "The opposite of honesty is:",
-    option: ["Kindness", "Laziness", "Lying", "Politeness"],
-    correct: 2
-  },
-  {
-    question: "A good Muslim always keeps his:",
-    option: ["House", "Promise", "Friends", "Books"],
-    correct: 1
-  },
-  {
-    question: "Which of the following is an Islamic greeting?",
-    option: ["Good Morning", "Hello", "Salam", "Hi"],
-    correct: 2
-  },
-  {
-    question: "Islam promotes peace, love and:",
-    option: ["Hatred", "Justice", "Jealousy", "Anger"],
-    correct: 1
-  },
-  {
-    question: "Speaking ill of others behind their back is called:",
-    option: ["Respect", "Gheebah (Backbiting)", "Advice", "Tawheed"],
-    correct: 1
-  }
-);
-
-// Reading Comprehension Section
-quizData.push(
-  {
-    question: "According to the passage, what is the main purpose of a library?",
-    option: ["To store furniture", "To provide food", "To offer books for reading", "To sell stationery"],
-    correct: 2
-  },
-  {
-    question: "What do readers usually find in a library?",
-    option: ["Books", "Toys", "Shoes", "Cups"],
-    correct: 0
-  },
-  {
-    question: "Which of the following is NOT mentioned in the passage as a library rule?",
-    option: ["Be quiet", "Return books on time", "Eat inside", "Respect the librarian"],
-    correct: 2
-  },
-  {
-    question: "Why is reading considered a good habit?",
-    option: ["It wastes time", "It improves knowledge", "It is boring", "It is expensive"],
-    correct: 1
-  },
-  {
-    question: "According to the passage, books are like:",
-    option: ["enemies", "friends", "neighbors", "teachers"],
-    correct: 1
-  },
-  {
-    question: "What should you do if you damage a library book?",
-    option: ["Hide it", "Throw it", "Replace or report it", "Ignore it"],
-    correct: 2
-  },
-  {
-    question: "When should you return a borrowed book?",
-    option: ["Next year", "After exams", "On due date", "Whenever you want"],
-    correct: 2
-  },
-  {
-    question: "Why is silence important in the library?",
-    option: ["To watch videos", "To respect readers", "To play games", "To clean books"],
-    correct: 1
-  },
-  {
-    question: "Who helps you find books in a library?",
-    option: ["Teacher", "Principal", "Librarian", "Friend"],
-    correct: 2
-  },
-  {
-    question: "How does reading help students?",
-    option: ["Makes them lazy", "Improves focus and knowledge", "Distracts them", "Wastes time"],
-    correct: 1
-  }
-);
-
-
-// Final Review Section
-quizData.push(
-  {
-    question: "Which is the largest continent by area?",
-    option: ["Africa", "Asia", "Europe", "North America"],
-    correct: 1
-  },
-  {
-    question: "What is the national flower of Pakistan?",
-    option: ["Rose", "Sunflower", "Jasmine", "Tulip"],
-    correct: 2
-  },
-  {
-    question: "How many colors are there in the rainbow?",
-    option: ["5", "6", "7", "8"],
-    correct: 2
-  },
-  {
-    question: "Which organ purifies blood in the human body?",
-    option: ["Liver", "Heart", "Lungs", "Kidneys"],
-    correct: 3
-  },
-  {
-    question: "Which day is celebrated as Pakistan Resolution Day?",
-    option: ["14 August", "23 March", "6 September", "25 December"],
-    correct: 1
-  },
-  {
-    question: "Who was the first female Prime Minister of Pakistan?",
-    option: ["Fatima Jinnah", "Benazir Bhutto", "Hina Rabbani", "Asma Jahangir"],
-    correct: 1
-  },
-  {
-    question: "Which instrument is used to measure temperature?",
-    option: ["Barometer", "Speedometer", "Thermometer", "Altimeter"],
-    correct: 2
-  },
-  {
-    question: "Which month comes after September?",
-    option: ["October", "November", "August", "December"],
-    correct: 0
-  },
-  {
-    question: "How many players are there in a cricket team?",
-    option: ["10", "11", "12", "9"],
-    correct: 1
-  },
-  {
-    question: "Which gas do we breathe in to survive?",
-    option: ["Carbon Dioxide", "Nitrogen", "Oxygen", "Helium"],
-    correct: 2
-  }
-);
+    "englishPassage": "In ancient times, storytelling was not only a form of entertainment but also a means of preserving culture and history. People gathered around fires, in courtyards, or under the open sky to listen to elders tell stories of bravery, wisdom, love, and morality. These stories often contained deep lessons and were passed from generation to generation through word of mouth. Storytellers used dramatic voices, gestures, and sometimes musical instruments to keep their audience engaged. Their words painted vivid pictures in the minds of the listeners, allowing them to imagine distant lands, heroes, mythical creatures, and life lessons. However, with the advent of modern technology, the tradition of oral storytelling has declined. Television, internet, and mobile phones have taken the place once held by the storyteller. Now, people rarely have time to sit and listen. Despite this, storytelling still holds a special place in education and literature. Teachers use stories to explain complex topics, and authors use them to entertain and inspire readers. The value of a good story remains, even though the way we tell and listen to stories has changed."
+ 
+  {
+  "quizData": [
+    {
+      "question": "Passage: The most important features of the Indus Valley civilization are town planning and architecture. The cities of the Indus Valley civilization were very well planned. Each city was planned in a grid-like pattern, formed by straight roads running from North to South and East to West. This divided the city into blocks. The main streets were ten (10) meters wide, so two bullock carts could pass by each other. The houses were built of thick walls of baked bricks. The bricks were joined together with mud, gypsum and lime mortar. The architecture of the Indus civilization was very advanced. There were well-designed dockyards, well-built granaries, large warehouses, well-aligned brick platforms and impenetrable protective walls. The massive walls of Indus cities most likely protected them from floods and invaders."
+    },
+    {
+      "question": "The similar meaning of the word 'architecture' is:",
+      "option": "Infrastructure, Discipline, Intense, Structureless",
+      "correct": 0
+    },
+    {
+      "question": "The similar meaning of the word 'bake' is:",
+      "option": "Cool, Bore, Cook, Mild",
+      "correct": 2
+    },
+    {
+      "question": "The similar meaning of the word 'advance' is:",
+      "option": "Descend, Fall, Recede, Progress",
+      "correct": 3
+    },
+    {
+      "question": "The opposite meaning of the word 'protect' is:",
+      "option": "Attack, Guard, Cover for, Safeguard",
+      "correct": 0
+    },
+    {
+      "question": "The opposite meaning of the word 'flood' is:",
+      "option": "Fill up, Deluge, Cover, Empty",
+      "correct": 3
+    },
+    {
+      "question": "The opposite meaning of the word 'invader' is:",
+      "option": "Assaultant, Defender, Occupier, Raider",
+      "correct": 1
+    },
+    {
+      "question": "The most important features of the Indus Valley civilization are town planning and:",
+      "option": "Architecture, Building, Cities, Towns",
+      "correct": 0
+    },
+    {
+      "question": "Each city was planned in a pattern of:",
+      "option": "Bricks, Town, Roads, Grid",
+      "correct": 3
+    },
+    {
+      "question": "The grid had straight roads, running from North to South and:",
+      "option": "West to East, East to West, West to North, East to East",
+      "correct": 1
+    },
+    {
+      "question": "The main streets were ten (10) meters wide enough to pass by:",
+      "option": "Two bullocks, Two carts, Two bullock carts, Bullock carts",
+      "correct": 2
+    },
+    {
+      "question": "The synonym of the word 'trash' is:",
+      "option": "Assets, Rubbish, Valuable, Rare",
+      "correct": 1
+    },
+    {
+      "question": "The synonym of the word 'enthusiastic' is:",
+      "option": "Cold, Interested, Dull, Weak",
+      "correct": 1
+    },
+    {
+      "question": "The synonym of the word 'curiosity' is:",
+      "option": "Apathy, Concern, Casualness, Norm",
+      "correct": 1
+    },
+    {
+      "question": "The synonym of the word 'companion' is:",
+      "option": "Antagonist, Foe, Mate, Enemy",
+      "correct": 2
+    },
+    {
+      "question": "The synonym of the word 'disguise' is:",
+      "option": "Character, Honesty, Reality, Covering",
+      "correct": 3
+    },
+    {
+      "question": "The antonym of the word 'famous' is:",
+      "option": "Common, Excellent, Glorious, Grand",
+      "correct": 0
+    },
+    {
+      "question": "The antonym of the word 'nightmare' is:",
+      "option": "Dream, Horror, Vision, Pleasure",
+      "correct": 0
+    },
+    {
+      "question": "The antonym of the word 'renowned' is:",
+      "option": "Famous, Esteemed, Inferior, Great",
+      "correct": 2
+    },
+    {
+      "question": "The antonym of the word 'commences' is:",
+      "option": "Progresses, Begins, Ends, Launches",
+      "correct": 2
+    },
+    {
+      "question": "The antonym of the word 'repair' is:",
+      "option": "Fixing, Damage, Injury, Wrecking",
+      "correct": 3
+    },
+    {
+      "question": "Select the correct spelt word:",
+      "option": "Experience, Expeirnce, Expirence, Experince",
+      "correct": 0
+    },
+    {
+      "question": "Select the correct spelt word:",
+      "option": "Describe, Diseribe, Descebe, Descriebe",
+      "correct": 0
+    },
+    {
+      "question": "Select the correct spelt word:",
+      "option": "Glamorus, Glamorous, Glamoros, Glamuros",
+      "correct": 1
+    },
+    {
+      "question": "Select the correct spelt word:",
+      "option": "Traditions, Traditons, Tradetions, Tradision",
+      "correct": 0
+    },
+    {
+      "question": "Select the correct spelt word:",
+      "option": "Abandon, Abendon, Abundon, Abandan",
+      "correct": 0
+    },
+    {
+      "question": "Ali and Abdullah have decide to go to the nearby park.",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 1
+    },
+    {
+      "question": "This shirt is yours and that is my.",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 1
+    },
+    {
+      "question": "On weekends, they usually went to the nearby canal for fishing.",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 1
+    },
+    {
+      "question": "I have always looked for ways to get things done in time.",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 1
+    },
+    {
+      "question": "We should treat the young and old with kindment.",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 1
+    },
+    {
+      "question": "As responsible citizens, we shouldn't draw ___ the walls ___ the park.",
+      "option": "on, of, at, on, in, of, of, on",
+      "correct": 2
+    },
+    {
+      "question": "There was a pin-drop silence ___ the classroom.",
+      "option": "on, in, at, to",
+      "correct": 1
+    },
+    {
+      "question": "Salar was a kind and helpful boy ___ nature.",
+      "option": "in, on, by, to",
+      "correct": 2
+    },
+    {
+      "question": "One of the most remarkable deserts ___ the world is the Sahara Desert.",
+      "option": "of, to, on, in",
+      "correct": 0
+    },
+    {
+      "question": "His window seat ___ the train was very uncomfortable.",
+      "option": "in, on, of, from",
+      "correct": 1
+    },
+    {
+      "question": "Select the correct subject of the following sentence: The teacher teaches in the class.",
+      "option": "The, Teacher, Teaches, Class",
+      "correct": 1
+    },
+    {
+      "question": "Select a present tense sentence from the following:",
+      "option": "He went to hospital, He will go to the hospital, He goes to the hospital, He has gone to the hospital",
+      "correct": 2
+    },
+    {
+      "question": "Select the correct subject of the following sentence: Raju went back to join his team.",
+      "option": "Went, Back, Join, Raju",
+      "correct": 3
+    },
+    {
+      "question": "Select the correct punctuation for this sentence:",
+      "option": "He asked if I was going,, He asked if I was going., He asked, if I was going., He asked: if I was going.",
+      "correct": 1
+    },
+    {
+      "question": "Select the proper prefix for the word 'agreement':",
+      "option": "Un, Dis, Mis, Re",
+      "correct": 1
+    },
+    {
+      "question": "The symbol ∩ represents:",
+      "option": "Union of sets, Difference of sets, Intersection of sets, Complement of a set",
+      "correct": 2
+    },
+    {
+      "question": "Select the following numbers that are exactly divisible by 5:",
+      "option": "24567, 23050, 10045, 55556",
+      "correct": 1
+    },
+    {
+      "question": "The correct order for operations in BODMAS:",
+      "option": "Addition, Multiplication, Division, Brackets, Subtraction, Order, Brackets, Order, Division, Multiplication, Addition, Subtraction, Brackets, Order, Multiplication, Division, Addition, Subtraction, Brackets, Division, Order, Multiplication, Addition, Subtraction",
+      "correct": 1
+    },
+    {
+      "question": "Choose a real number from the following:",
+      "option": "√-4, 2/3, 0, 3 + 2i",
+      "correct": 1
+    },
+    {
+      "question": "The correct definition of a set of natural numbers is:",
+      "option": "All positive integers excluding zero, All positive integers including zero, All integers, All real numbers",
+      "correct": 0
+    },
+    {
+      "question": "If A = {a, b, c} and B = {a, b, c, d, e} then:",
+      "option": "A = B, A ⊂ B, A ⊃ B, B ⊂ A",
+      "correct": 1
+    },
+    {
+      "question": "If X = {3, 4, 5, 6} and Y = {1, 2, 3, 8} then X ∪ Y is:",
+      "option": "{1, 2, 3, 4, 5, 6}, {1, 2, 3, 4, 8}, {3}, {1, 2, 3, 4, 5, 6, 8}",
+      "correct": 3
+    },
+    {
+      "question": "If U = {1, 2, 3, 4, 5, 6, 7, 8} and B = {2, 4, 6, 8}, B' is:",
+      "option": "{1, 2}, {1, 3, 5, 7}, {1, 3, 5, 7}, {2, 4, 6, 8}",
+      "correct": 1
+    },
+    {
+      "question": "The decimal fraction 4/18 is:",
+      "option": "0.333..., 0.222..., 0.444..., 0.555...",
+      "correct": 1
+    },
+    {
+      "question": "Tabular form of A = {x: x ∈ Z ∧ x² = 25} is:",
+      "option": "{1, 5}, {-5, 5}, {1, 5, 25}, {-5}",
+      "correct": 1
+    },
+    {
+      "question": "If 1 two is added to the greatest five-digit number, the number will be:",
+      "option": "1 less than the greatest six-digit number, 1 less than the smallest six-digit number, 1 more than the greatest six-digit number, 1 more than the smallest six-digit number",
+      "correct": 3
+    },
+    {
+      "question": "The statement that defines irrational numbers is:",
+      "option": "Non-terminating and non-recurring, Terminating but non-recurring, Terminating and recurring, Known as",
+      "correct": 0
+    },
+    {
+      "question": "The reasoning in which we generalized the statement is known as:",
+      "option": "Inductive reasoning, Conversion reasoning, Deductive reasoning, Quantitative reasoning",
+      "correct": 0
+    },
+    {
+      "question": "If A ∪ B = A, then we can interpret this as:",
+      "option": "A ⊃ B, A ∩ B = A, A ∩ B, B ⊃ A",
+      "correct": 0
+    },
+    {
+      "question": "Three or more points lies on the same straight line are known as:",
+      "option": "Collinear points, Non-collinear points, Intersection points, Meeting points",
+      "correct": 0
+    },
+    {
+      "question": "15 is 20% of:",
+      "option": "60, 75, 80, 105",
+      "correct": 0
+    },
+    {
+      "question": "The temperature of a hilly mountainous area is -3°C. After a few hours, it will drop down by 4°C. Then the temperature will be:",
+      "option": "-1, 1, 7, -7",
+      "correct": 3
+    },
+    {
+      "question": "Decimal number 139 will be written in binary numbers as:",
+      "option": "10001011, 1000101, 10001010, 10011001",
+      "correct": 2
+    },
+    {
+      "question": "If six people dig a well 200m deep in 15 days, the number of people that are required to dig the same well in 18 days is:",
+      "option": "5, 15, 25, 45",
+      "correct": 0
+    },
+    {
+      "question": "Sana's school is 9m in the north, and the market is 12m in the east of her home. The distance between the school and the market is:",
+      "option": "3, 10, 15, 21",
+      "correct": 1
+    },
+    {
+      "question": "Amoeba is a/an:",
+      "option": "Unicellular organism, Multicellular organism, Photosynthetic organism, Non-living organism",
+      "correct": 0
+    },
+    {
+      "question": "Liver cells join together to form:",
+      "option": "Liver tissue, Liver organ, Liver system, Complete Organism",
+      "correct": 0
+    },
+    {
+      "question": "All of the following are parts of the digestive system except:",
+      "option": "Stomach, Small intestine, Heart, Large intestine",
+      "correct": 2
+    },
+    {
+      "question": "The control and coordination of the body comes under:",
+      "option": "Circulatory system, Nervous system, Renal system, Digestive system",
+      "correct": 1
+    },
+    {
+      "question": "The smallest structural and functional unit of life is:",
+      "option": "Organ, Cell, Tissue, System",
+      "correct": 1
+    },
+    {
+      "question": "The Red blood cells (RBCs) lack a nucleus to:",
+      "option": "Store more nutrients, Increase oxygen-carrying capacity, Divide quickly, Fight with pathogens",
+      "correct": 1
+    },
+    {
+      "question": "The atomic number of Carbon is:",
+      "option": "8, 6, 7, 9",
+      "correct": 1
+    },
+    {
+      "question": "Liquids are denser than gases due to:",
+      "option": "Large intermolecular spaces, Lighter in weight, Small intermolecular spaces, Opaque appearance",
+      "correct": 2
+    },
+    {
+      "question": "Chlorophyll is required for the process of:",
+      "option": "Respiration, Photosynthesis, Filtration, Osmosis",
+      "correct": 1
+    },
+    {
+      "question": "The plants that grow best in the soil with low water quantity are:",
+      "option": "Mesophytes, Xerophytes, Halophytes, Hydrophytes",
+      "correct": 1
+    },
+    {
+      "question": "'Nashrah' means:",
+      "option": "To write, To listen, To dictate, To open",
+      "correct": 0
+    },
+    {
+      "question": "The key purpose of worship (ibadat) apart from the expression of servitude:",
+      "option": "To abide by the law, Recite the Holy Quran, To show our gratitude and love for Allah, To reform one's character and ethics",
+      "correct": 2
+    },
+    {
+      "question": "Pakistan shares its longest border with the country:",
+      "option": "China, Iran, India, Afghanistan",
+      "correct": 2
+    },
+    {
+      "question": "The narrow strip of land that connects Pakistan with central Asia is:",
+      "option": "Gibraltar, Humoz, Wakhan, Suez Canal",
+      "correct": 2
+    },
+    {
+      "question": "The absence of rain over a region for some time causes the land to dry and thus results in:",
+      "option": "Hurricane, Flood, Drought, Earthquake",
+      "correct": 2
+    },
+    {
+      "question": "The current Prime Minister of Pakistan is:",
+      "option": "Imran Khan, Shehbaz Sharif, Bilawal Bhutto Zardari, Nawaz Sharif",
+      "correct": 1
+    },
+    {
+      "question": "The name of the largest desert in Pakistan is:",
+      "option": "Thar Desert, Cholistan Desert, Kharan Desert, Thal Desert",
+      "correct": 0
+    },
+    {
+      "question": "The river known as the lifeline of Pakistan is:",
+      "option": "Ravi River, Jhelum River, Chenab River, Indus River",
+      "correct": 3
+    },
+    {
+      "question": "The name of Pakistan's space agency is:",
+      "option": "NASA, ISRO, SUPARCO, ESA",
+      "correct": 2
+    },
+    {
+      "question": "The white colour in Pakistan's flag represents:",
+      "option": "Peace and minorities, Prosperity, Agriculture, Strength",
+      "correct": 0
+    },
+    {
+      "question": "CPU is called the:",
+      "option": "Lungs of Computer, Hands of Computer, Heart of Computer, Brain of Computer",
+      "correct": 3
+    },
+    {
+      "question": "Every algorithm has a:",
+      "option": "Loop Condition, Start, Stop, Finite, Infinite Loops, Sequence, Conditions",
+      "correct": 1
+    },
+    {
+      "question": "A formula in Excel always starts with a/an:",
+      "option": "Plus (+), Equal (=), Divide (/), Multiply (*)",
+      "correct": 1
+    },
+    {
+      "question": "If you go through all possible solutions, the required algorithm is:",
+      "option": "Recursive Algorithm, Brute Force Algorithm, Searching Algorithm, Sorting Algorithm",
+      "correct": 1
+    },
+    {
+      "question": "DBMS stands for:",
+      "option": "Database Management System, Database Management Software, Database Management Service, Database Management Source",
+      "correct": 0
+    },
+    {
+      "question": "You want to add audio video file in an HTML document using the tag:",
+      "option": "<embed>, <audio>, <video>, <mp4>",
+      "correct": 1
+    },
+    {
+      "question": "Second Generation Computers use which technology:",
+      "option": "ICs, Vacuum Tubes, Transistors, AI",
+      "correct": 2
+    },
+    {
+      "question": "Legal instrument that provides legal rights to the creator of artwork, literature, or a work that conveys information or ideas:",
+      "option": "Patent, Copyright, Trademark, Piracy",
+      "correct": 1
+    },
+    {
+      "question": "The function to insert data in a stack data structure is:",
+      "option": "Push, Pop, Insert, Enter",
+      "correct": 0
+    },
+    {
+      "question": "'if', 'if-else', 'switch' statements come in which statements:",
+      "option": "Control, Structure, Conditional, Query",
+      "correct": 2
+    },
+    {
+      "question": "Lahore is called the Heart of Pakistan because:",
+      "option": "It is the largest city, It is the capital, It is the cultural and historical centre, It is the financial hub",
+      "correct": 2
+    },
+    {
+      "question": "The importance of the Indus River in Pakistan is because:",
+      "option": "It is the longest river in the world, It flows through all provinces, It is a tourist attraction, It is the primary source of water for agriculture",
+      "correct": 3
+    },
+    {
+      "question": "The purpose of the Lahore Resolution of 1940 was:",
+      "option": "To demand a separate homeland for Muslims, To establish a democratic government, To get independence from Britain, To unite India and Pakistan",
+      "correct": 0
+    },
+    {
+      "question": "The largest continent in the world by population and area is:",
+      "option": "Europe, Asia, Africa, North America",
+      "correct": 1
+    },
+    {
+      "question": "The longest river in the world is:",
+      "option": "Amazon River, Yangtze River, Nile River, Mississippi River",
+      "correct": 2
+    },
+    {
+      "question": "The smallest country in the world by land area is:",
+      "option": "Monaco, Brunei, Austria, Vatican City",
+      "correct": 3
+    },
+    {
+      "question": "The largest desert in the world is:",
+      "option": "Sahara Desert, Gobi Desert, Kalahari Desert, Atacama Desert",
+      "correct": 0
+    },
+    {
+      "question": "Some countries experience more earthquakes than others because:",
+      "option": "They are closer to the Equator, They have more mountains, They are located near tectonic plate boundaries, They have larger landmasses",
+      "correct": 2
+    },
+    {
+      "question": "The main purpose of the Great Wall of China was to:",
+      "option": "Trade route protection, Defence against invasions, Cultural significance, Navigation guide",
+      "correct": 1
+    },
+    {
+      "question": "The United Nations (UN) was formed after World War II because:",
+      "option": "To increase military power, To expand world trade, To prevent future wars and promote peace, To divide territories",
+      "correct": 2
+    }
+  ]
+}

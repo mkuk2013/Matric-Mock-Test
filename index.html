@@ -1,1289 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IBA STS Mock Tests - Elevate Your Prep!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBA STS Mock Tests</title>
+  <!-- Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* New Design Color Palette & Variables */
-    :root {
-      --primary-blue: #2c7ef8;
-      /* Vibrant Blue */
-      --secondary-blue: #0056b3;
-      /* Deeper Blue */
-      --accent-green: #2ecc71;
-      /* Fresh Green for highlights */
-      --accent-orange: #e67e22;
-      /* Warm Orange for special cards */
-      --bg-light: #f8f9fa;
-      /* Very light gray background */
-      --text-dark: #212529;
-      /* Dark text */
-      --text-muted: #6c757d;
-      /* Muted gray text */
-      --card-bg-light: #ffffff;
-      /* White card background */
-      --border-light: rgba(0, 0, 0, 0.08);
-      /* Light border */
-      --shadow-light: rgba(0, 0, 0, 0.05);
-      /* Subtle shadow */
-      --new-badge-bg: #ff4d4d;
-      /* Bright Red for New badge */
-      --footer-bg-light: #f0f2f5;
-    }
-
-    /* Dark Mode Variables */
-    body.dark {
-      --primary-blue: #6aa8fe;
-      /* Lighter Blue for dark mode */
-      --secondary-blue: #3a7bd5;
-      /* Mid Blue for dark mode */
-      --accent-green: #58d68d;
-      /* Lighter green */
-      --accent-orange: #f39c12;
-      /* Lighter orange */
-      --bg-light: #1a1a2e;
-      /* Deep dark background */
-      --text-dark: #e0e0e0;
-      /* Light text */
-      --text-muted: #b0b8c0;
-      /* Lighter muted text */
-      --card-bg-light: #2c2c40;
-      /* Darker card background */
-      --border-light: rgba(255, 255, 255, 0.12);
-      /* Dark border */
-      --shadow-light: rgba(0, 0, 0, 0.3);
-      /* More pronounced shadow */
-      --new-badge-bg: #ff6666;
-      /* Slightly softer red */
-      --footer-bg-light: #232338;
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.7;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      transition: background 0.4s ease, color 0.4s ease;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      background: linear-gradient(180deg, #e2e8f0, #cbd5e1);
+      color: #1e293b;
+      transition: all 0.5s ease;
     }
 
-    /* Header & Hero Section */
-    .hero-header {
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-      color: white;
-      padding: 80px 20px 60px;
+    /* Dark mode styles */
+    .dark-mode {
+      background: linear-gradient(180deg, #1a202c, #2d3748);
+      color: #f1f5f9;
+    }
+
+    .dark-mode .card {
+      background: rgba(45, 55, 72, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .dark-mode .card h3,
+    .dark-mode .card p {
+      color: #ffffff;
+    }
+
+    .dark-mode .notice {
+      background: rgba(74, 85, 104, 0.7);
+      border-left-color: #facc15;
+    }
+
+    .dark-mode h2 {
+      color: #f1f5f9;
+    }
+
+    /* Header styles */
+    header {
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      color: #fff;
+      padding: 2.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* Dark mode toggle button */
+    #darkModeToggle {
+      background: linear-gradient(45deg, #ec4899, #8b5cf6);
+      border: none;
+      padding: 0.75rem 1.75rem;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #darkModeToggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main content area */
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Notice section */
+    .notice {
+      background: rgba(254, 252, 191, 0.9);
+      border-left: 5px solid #facc15;
+      padding: 1.75rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+      50% { box-shadow: 0 6px 20px rgba(250, 204, 21, 0.4); }
+    }
+
+    .notice p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .notice a {
+      color: #7c3aed;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .notice a:hover {
+      color: #db2777;
+      text-decoration: underline;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
       text-align: center;
-      box-shadow: 0 6px 20px var(--shadow-light);
+      margin-bottom: 2.5rem;
+      color: #1e293b;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Grid for mock test cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Card styles */
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      text-decoration: none;
+      color: #1e293b;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
       position: relative;
       overflow: hidden;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* particles.js container styling */
-    #particles-js {
+    .card::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
-      /* Ensures particles are behind text */
+      background: linear-gradient(45deg, rgba(124, 58, 237, 0.1), rgba(219, 39, 119, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s;
     }
 
-    .hero-header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.2rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-      position: relative;
-      z-index: 1;
-      /* Ensures text is above particles */
+    .card:hover::before {
+      opacity: 1;
     }
 
-    .hero-header p {
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin: 0;
-      opacity: 0.95;
-      position: relative;
-      z-index: 1;
-      /* Ensures text is above particles */
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    .typing-text {
-      display: inline-block;
+    .card .emoji {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: #7c3aed;
+      transition: transform 0.3s;
+    }
+
+    .card:hover .emoji {
+      transform: scale(1.1);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
       font-weight: 600;
-      color: #ffffff;
-      white-space: nowrap;
-      overflow: hidden;
-      font-size: 1.6rem;
-      margin-top: 30px;
-      width: 280px;
-      min-height: 1.8em;
-      animation: typing 3.5s steps(30, end) infinite;
-      position: relative;
-      z-index: 1;
-      /* Ensures text is above particles */
+      margin-bottom: 0.5rem;
     }
 
-    @keyframes typing {
-      from {
-        width: 0
-      }
-    }
-
-
-    /* Important Notice Styling */
-    .important-notice {
-      max-width: 1200px;
-      margin: 40px auto 30px;
-      background: #fff3cd;
-      border-left: 6px solid var(--accent-orange);
-      padding: 22px 30px;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      color: #856404;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      flex-wrap: nowrap;
-    }
-
-    .important-notice::before {
-      content: '🚨';
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-
-    .important-notice strong {
-      font-weight: 700;
-      color: #725200;
-    }
-
-    .important-notice a {
-      color: var(--primary-blue);
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.3s ease, transform 0.2s ease;
-    }
-
-    .important-notice a:hover {
-      text-decoration: underline;
-      transform: translateX(3px);
-    }
-
-    body.dark .important-notice {
-      background: #3e300b;
-      border-left-color: var(--accent-orange);
-      color: #ffe082;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    body.dark .important-notice strong {
-      color: #fff3cd;
-    }
-
-    body.dark .important-notice a {
-      color: var(--primary-blue);
-    }
-
-
-    /* Dark/Light Mode Toggle */
-    #toggleMode {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: var(--text-dark);
-      background: var(--card-bg-light);
-      border: 1px solid var(--border-light);
-      border-radius: 30px;
-      padding: 10px 22px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px var(--shadow-light);
-      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      margin-top: 30px;
-      margin-bottom: 40px;
-      user-select: none;
+    .card p {
+      font-size: 0.9rem;
+      color: #db2777;
       font-weight: 500;
+      text-transform: uppercase;
     }
 
-    #toggleMode:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
-    }
-
-    body.dark #toggleMode {
-      background: var(--card-bg-light);
-      color: var(--text-dark);
-      border-color: var(--border-light);
-      box-shadow: 0 44px 10px var(--shadow-light);
-    }
-
-    /* Main Section */
-    .main-section {
-      max-width: 1080px;
-      margin: 50px auto;
-      padding: 0 25px;
-      flex-grow: 1;
-    }
-
-    .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 45px;
-      text-align: center;
+    /* New Card Label for 'New Arrival' */
+    .card-new-arrival {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ef4444; /* Red color for new */
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--primary-blue);
-      position: relative;
-      padding-bottom: 15px;
-      transition: color 0.4s ease;
-    }
-
-    .section-title::before {
-      content: "✨";
-      margin-right: 12px;
-      font-size: 1.8rem;
-      vertical-align: middle;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--accent-green);
-      border-radius: 2px;
-      transition: background 0.4s ease;
-    }
-
-    body.dark .section-title {
-      color: var(--primary-blue);
-    }
-
-    body.dark .section-title::after {
-      background: var(--accent-green);
-    }
-
-    /* Grid Layout for Cards */
-    .mock-test-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-      justify-content: center;
-    }
-
-    .mock-test-grid a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Card Styling */
-    .card-item {
-      background: var(--card-bg-light);
-      color: var(--text-dark);
-      border: 1px solid var(--border-light);
-      border-radius: 18px;
-      padding: 20px 18px;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-      box-shadow: 0 8px 20px var(--shadow-light);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 140px;
-      box-sizing: border-box;
-      will-change: transform, box-shadow;
-    }
-
-    .card-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 6px;
-      background: var(--primary-blue);
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      transition: width 0.8s ease-in-out;
-    }
-
-    .card-item:hover::before {
-      width: 100%;
-    }
-
-    .card-item:hover {
-      transform: translateY(-8px) scale(1.03) rotateZ(0.5deg);
-      /* Original shadow for lift + new glow shadow */
-      box-shadow:
-        0 15px 35px rgba(0, 123, 255, 0.3),
-        /* Original lift shadow */
-        0 0 25px 5px rgba(0, 123, 255, 0.5);
-      /* New glow effect */
-      border-color: var(--primary-blue);
-      /* Stronger border on hover */
-    }
-
-    body.dark .card-item:hover {
-      box-shadow:
-        0 15px 35px rgba(77, 171, 247, 0.35),
-        /* Dark mode original lift shadow */
-        0 0 25px 5px rgba(77, 171, 247, 0.6);
-      /* Dark mode new glow effect */
-      border-color: var(--primary-blue);
-      /* Dark mode stronger border on hover */
-    }
-
-    .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      color: var(--accent-green);
-      transition: color 0.3s ease;
-      line-height: 1;
-      animation: pulse 2.5s infinite ease-in-out;
-    }
-
-    body.dark .card-icon {
-      color: var(--accent-green);
+      text-transform: uppercase;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transform: rotate(5deg);
+      animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.08);
-        opacity: 0.9;
-      }
-    }
-
-    .card-item h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin: 0 0 8px;
-      color: var(--text-dark);
-    }
-
-    .card-item span {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    /* Special Card Styles */
-    .card-official-sample {
-      background: linear-gradient(160deg, var(--accent-orange), #ffcd78);
-      color: white;
-      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
-      border: none;
-    }
-
-    body.dark .card-official-sample {
-      background: linear-gradient(160deg, var(--accent-orange), #ffb74d);
-      box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+      0% { transform: rotate(5deg) scale(1); opacity: 1; }
+      50% { transform: rotate(5deg) scale(1.05); opacity: 0.9; }
+      100% { transform: rotate(5deg) scale(1); opacity: 1; }
     }
 
 
-    .card-official-sample .card-icon {
-      color: white;
-      animation: rotateScalePulse 3s infinite ease-in-out;
-    }
-
-    .card-official-sample h3,
-    .card-official-sample span {
-      color: white;
-    }
-
-    .card-official-sample:hover {
-      transform: translateY(-10px) scale(1.04) rotateZ(-0.5deg);
-      box-shadow: 0 18px 40px rgba(230, 126, 34, 0.45);
-    }
-
-    @keyframes rotateScalePulse {
-      0%,
-      100% {
-        transform: scale(1) rotate(0deg);
-      }
-      50% {
-        transform: scale(1.1) rotate(8deg);
-      }
-    }
-
-
-    /* NEW Badge styling */
-    .badge-new {
-      display: inline-block;
-      background: var(--new-badge-bg);
-      color: white !important;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      animation: badgeBlinker 1.8s ease-in-out infinite;
-      box-shadow: 0 2px 6px rgba(255, 77, 77, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      white-space: nowrap;
-      margin-top: 8px;
-      transform-origin: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    @keyframes badgeBlinker {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.7;
-        transform: scale(0.98);
-      }
-    }
-
-    /* Animations for initial load */
-    @keyframes fadeInSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-in {
-      animation: fadeInSlideUp 0.9s ease-out both;
-    }
-
-    .delay-1 {
-      animation-delay: 0.1s;
-    }
-
-    .delay-2 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.3s;
-    }
-
-    .delay-4 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-5 {
-      animation-delay: 0.5s;
-    }
-
-    .delay-6 {
-      animation-delay: 0.6s;
-    }
-
-    .delay-7 {
-      animation-delay: 0.7s;
-    }
-
-    .delay-8 {
-      animation-delay: 0.8s;
-    }
-
-    .delay-9 {
-      animation-delay: 0.9s;
-    }
-
-    .delay-10 {
-      animation-delay: 1.0s;
-    }
-
-    .delay-11 {
-      animation-delay: 1.1s;
-    }
-
-    .delay-12 {
-      animation-delay: 1.2s;
-    }
-    .delay-13 {
-      animation-delay: 1.3s;
-    }
-    .delay-14 {
-      animation-delay: 1.4s;
-    }
-    .delay-15 {
-      animation-delay: 1.5s;
-    }
-    .delay-16 {
-      animation-delay: 1.6s;
-    }
-    .delay-17 {
-      animation-delay: 1.7s;
-    }
-
-
-    /* Footer */
+    /* Footer styles */
     footer {
-      margin-top: 80px;
-      padding: 50px 20px;
+      background: linear-gradient(45deg, #1e3a8a, #9d174d);
+      color: #fff;
+      padding: 2rem 0;
       text-align: center;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      background: var(--footer-bg-light);
-      border-top: 1px solid var(--border-light);
-      box-shadow: 0 -4px 15px var(--shadow-light);
-      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-      border-top-left-radius: 40px;
-      border-top-right-radius: 40px;
     }
 
-    footer strong {
-      display: block;
-      margin-top: 15px;
-      color: var(--text-dark);
-      font-weight: 600;
-      transition: color 0.4s ease;
-    }
-
-    .social-links {
-      margin: 25px 0;
+    .footer-links {
       display: flex;
       justify-content: center;
+      gap: 1.5rem; /* Reduced gap between social media items */
       flex-wrap: wrap;
-      gap: 20px;
+      margin-bottom: 1.5rem;
     }
 
-    .social-links a {
-      color: var(--primary-blue);
+    .footer-links a {
+      color: #fff;
+      font-size: 1.125rem;
       text-decoration: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 15px;
-      border-radius: 25px;
-      background: var(--card-bg-light);
-      border: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-      font-weight: 500;
-      box-shadow: 0 2px 8px var(--shadow-light);
+      padding: 0.75rem 1.25rem; /* Add padding to make them look like buttons */
+      border-radius: 25px; /* Rounded corners for button feel */
+      background-color: rgba(255, 255, 255, 0.15); /* Subtle background */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
-    .social-links a:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: var(--primary-blue);
-      color: white;
-      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
-    }
-
-    .social-links a:hover i {
-      transform: rotate(8deg) scale(1.1);
-      color: unset;
-    }
-
-    .social-links a i {
-      font-size: 1.3rem;
-      transition: transform 0.3s ease;
-      color: unset;
-    }
-
-    /* Dark Mode specific social link adjustments */
-    body.dark .social-links a {
-      background: var(--card-bg-light);
-      border-color: var(--border-light);
-      box-shadow: 0 2px 8px var(--shadow-light);
-    }
-
-    body.dark .social-links a i {
-      color: unset;
-    }
-
-    body.dark .social-links a:hover {
-      background: var(--primary-blue);
-      color: white;
-    }
-
-    body.dark .social-links a:hover i {
-      color: unset;
-    }
-
-    /* Go to Top Button Styles */
-    #scrollToTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: var(--primary-blue);
-      color: white;
-      cursor: pointer;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 18px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
-      opacity: 0;
-    }
-
-    #scrollToTopBtn:hover {
-      background-color: var(--secondary-blue);
+    .footer-links a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
       transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      color: #fff; /* Ensure text color remains white on hover */
     }
 
-    body.dark #scrollToTopBtn {
-      background-color: var(--primary-blue);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    .footer-links a i,
+    .footer-links a svg { /* Targeting Font Awesome icons and Website SVG */
+      font-size: 1.5rem; /* Adjust icon size */
+      margin-right: 0.5rem; /* Space between icon and text */
+      transition: transform 0.3s;
     }
 
-    body.dark #scrollToTopBtn:hover {
-      background-color: var(--secondary-blue);
+    .footer-links a:hover i,
+    .footer-links a:hover svg {
+      transform: scale(1.1);
+    }
+
+    /* Specific icon colors */
+    .fa-whatsapp {
+        color: #25D366; /* WhatsApp green */
+    }
+    .fa-facebook-f {
+        color: #1877F2; /* Facebook blue */
+    }
+    .website-icon {
+        color: #fff; /* White for consistency */
     }
 
 
-    /* Responsive Adjustments */
-    @media (max-width: 1200px) {
-      .mock-test-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    footer p {
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
 
-    @media (max-width: 992px) {
-      .hero-header h1 {
-        font-size: 2.8rem;
-      }
-
-      .hero-header p {
-        font-size: 1.15rem;
-      }
-
-      .typing-text {
-        font-size: 1.4rem;
-        width: 220px;
-      }
-
-      .main-section {
-        padding: 0 20px;
-      }
-
-      .section-title {
-        font-size: 1.9rem;
-      }
-
-      .mock-test-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-
-      .card-item {
-        min-height: 160px;
-        padding: 18px 15px;
-      }
-
-      .card-item h3 {
-        font-size: 1.1rem;
-      }
-
-      .card-icon {
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-      }
+    footer p.italic {
+      font-style: italic;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
     }
 
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .hero-header {
-        padding: 60px 15px 40px;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
+      header h1 {
+        font-size: 2rem;
       }
 
-      .hero-header h1 {
-        font-size: 2.3rem;
-      }
-
-      .hero-header p {
+      header p {
         font-size: 1rem;
       }
 
-      .typing-text {
-        font-size: 1.2rem;
-        width: 180px;
-      }
-
-      .important-notice {
-        margin: 30px auto 20px;
-        padding: 18px 25px;
-        font-size: 0.95rem;
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .important-notice::before {
-        font-size: 1.6rem;
-      }
-
-      #toggleMode {
-        padding: 8px 18px;
+      #darkModeToggle {
+        padding: 0.5rem 1.25rem;
         font-size: 0.9rem;
-        margin-top: 20px;
-        margin-bottom: 30px;
       }
 
-      .main-section {
-        margin: 40px auto;
-        padding: 0 15px;
-      }
-
-      .section-title {
-        font-size: 1.7rem;
-        margin-bottom: 35px;
-      }
-
-      .section-title::before {
-        font-size: 1.5rem;
-      }
-
-      .mock-test-grid {
+      .grid {
         grid-template-columns: 1fr;
-        gap: 18px;
       }
 
-      .card-item {
-        min-height: 140px;
-        padding: 16px 15px;
+      .card {
+        padding: 1.5rem;
       }
 
-      .card-item h3 {
-        font-size: 1.05rem;
+      .footer-links a {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
       }
 
-      .card-icon {
-        font-size: 1.6rem;
-        margin-bottom: 6px;
-      }
-      .card-item span {
-        font-size: 0.85rem;
-      }
-
-      #scrollToTopBtn {
-        bottom: 20px;
-        right: 20px;
-        padding: 12px;
-        font-size: 16px;
+      .footer-links a i,
+      .footer-links a svg {
+        font-size: 1.25rem;
+        margin-right: 0.4rem;
       }
     }
 
-    @media (max-width: 576px) {
-      .hero-header {
-        padding: 50px 10px 30px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+    @media (max-width: 480px) {
+      header {
+        padding: 1.5rem;
       }
 
-      .hero-header h1 {
-        font-size: 1.9rem;
+      h2 {
+        font-size: 1.75rem;
       }
 
-      .hero-header p {
-        font-size: 0.9rem;
-      }
-
-      .typing-text {
+      .notice p {
         font-size: 1rem;
-        width: 160px;
       }
 
-      .important-notice {
-        padding: 15px 20px;
+      .footer-links {
+        gap: 1rem; /* Smaller gap on very small screens */
+      }
+
+      .footer-links a {
+        padding: 0.5rem 0.8rem;
         font-size: 0.9rem;
-        margin-left: 15px;
-        margin-right: 15px;
       }
 
-      #toggleMode {
-        margin-top: 15px;
-        margin-bottom: 20px;
-      }
-
-      .main-section {
-        margin: 30px auto;
-        padding: 0 10px;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 30px;
-      }
-
-      .mock-test-grid {
-        gap: 15px;
-      }
-
-      .card-item {
-        min-height: 120px;
-        padding: 14px 12px;
-      }
-
-      .card-item h3 {
-        font-size: 0.95rem;
-      }
-
-      .card-icon {
-        font-size: 1.4rem;
-        margin-bottom: 5px;
-      }
-      .card-item span {
-        font-size: 0.8rem;
-      }
-
-      footer {
-        margin-top: 50px;
-        padding: 30px 10px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-      }
-
-      .social-links {
-        flex-direction: column;
-        align-items: center;
+      .footer-links a i,
+      .footer-links a svg {
+        font-size: 1.1rem;
+        margin-right: 0.3rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <header class="hero-header">
-    <div id="particles-js"></div> <h1 class="animate-in delay-1">IBA STS Mock Tests</h1>
-    <p class="animate-in delay-2">Matriculation Category – Elevate Your Exam Preparation!</p>
-    <p><span class="typing-text animate-in delay-3"></span></p>
+  <header>
+    <div class="header-content">
+      <div>
+        <h1>IBA STS Mock Tests</h1>
+        <p>Master Your Matriculation Exam with Confidence!</p>
+      </div>
+      <button id="darkModeToggle">🌑 Dark Mode</button>
+    </div>
   </header>
 
-  <div class="important-notice animate-in delay-4">
-    <strong>IMPORTANT NOTICE:</strong> All mock tests are password protected. For password, please contact on WhatsApp:
-    <a href="https://wa.me/923480358640" target="_blank"><i class="fab fa-whatsapp"></i> +92 348 0358640</a>
-  </div>
+  <main>
+    <section class="notice">
+      <p>
+        <strong>IMPORTANT NOTICE:</strong> All mock tests are password-protected. Contact us on WhatsApp for access:
+        <a href="tel:+923480358640">+92 348 0358640</a>
+      </p>
+    </section>
 
-  <div style="text-align: center;">
-    <button id="toggleMode" class="animate-in delay-5">
-      🌙 Dark Mode
-    </button>
-  </div>
-
-  <section class="main-section">
-    <h2 class="section-title animate-in delay-6">🎯 Select Your Mock Test</h2>
-    <div class="mock-test-grid">
-      <a href="quiz1.html" class="animate-in delay-7">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+    <section>
+      <h2>🎯 Choose Your Mock Test</h2>
+      <div class="grid">
+        <!-- New Arrival: Category Paper - Pinned to the top -->
+        <a href="official-test1.html" class="card">
+          <div class="emoji">✨</div>
+          <h3>Today's Matric Category Paper 21-06-2025</h3>
+          <p class="card-label">Test Result as per Today's Paper!</p>
+          <span class="card-new-arrival">New Arrival!</span>
+        </a>
+        <a href="quiz1.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 1</h3>
-        </div>
-      </a>
-      <a href="quiz2.html" class="animate-in delay-8">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz2.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 2</h3>
-        </div>
-      </a>
-      <a href="quiz3.html" class="animate-in delay-9">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz3.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 3</h3>
-        </div>
-      </a>
-      <a href="quiz4.html" class="animate-in delay-10">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz4.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 4</h3>
-        </div>
-      </a>
-      <a href="matric-sample-paper.html" class="animate-in delay-11">
-        <div class="card-item card-official-sample">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz5.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Official Sample Paper</h3>
-          <span class="badge-new">Must Attempt!</span>
-        </div>
-      </a>
-      <a href="quiz5.html" class="animate-in delay-12">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+          <p class="card-label">Must Attempt!</p>
+        </a>
+        <a href="quiz6.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 5</h3>
-          <span class="badge-new">New UI/UX</span>
-        </div>
-      </a>
-      <a href="quiz6.html" class="animate-in delay-13">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+          <p class="card-label">New UI/UX</p>
+        </a>
+        <a href="quiz7.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 6</h3>
-        </div>
-      </a>
-      <a href="quiz7.html" class="animate-in delay-14">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz8.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 7</h3>
-        </div>
-      </a>
-      <a href="quiz8.html" class="animate-in delay-15">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz9.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 8</h3>
-        </div>
-      </a>
-      <a href="quiz9.html" class="animate-in delay-16">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+        </a>
+        <a href="quiz10.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 9</h3>
-          <span class="badge-new">Naeemullah Mehar Special</span>
-        </div>
-      </a>
-      <a href="quiz10.html" class="animate-in delay-17">
-        <div class="card-item">
-          <div class="card-icon">📚</div>
+          <p class="card-label">Naeemullah Mehar Special Mock Test</p>
+        </a>
+        <a href="quiz10.html" class="card">
+          <div class="emoji">📚</div>
           <h3>Mock Test 10</h3>
-          <span class="badge-new">New</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <button id="scrollToTopBtn" title="Go to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+          <p class="card-label">New</p>
+        </a>
+        <a href="quiz11.html" class="card">
+          <div class="emoji">📚</div>
+          <h3>Mock Test 11</h3>
+          <p class="card-label">Naeemullah Mehar Special 2nd Mock Test</p>
+        </a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="social-links">
-      <a href="https://chat.whatsapp.com/JsizrcizF4KBfprilR3EQP" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp Group
+    <div class="footer-links">
+      <!-- WhatsApp Group Icon (Font Awesome) -->
+      <a href="https://chat.whatsapp.com/your-whatsapp-group-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp Group
       </a>
-      <a href="https://whatsapp.com/channel/0029VbAoVyXHwXbBQ8pjlc1o" target="_blank">
-        <i class="fab fa-whatsapp-square"></i> WhatsApp Channel
+      <!-- WhatsApp Channel Icon (Font Awesome) -->
+      <a href="https://whatsapp.com/channel/your-whatsapp-channel-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp Channel
       </a>
-      <a href="https://facebook.com/mocktesthub" target="_blank">
-        <i class="fab fa-facebook-square"></i> Facebook Page
+      <!-- Facebook Page Icon (Font Awesome) -->
+      <a href="https://www.facebook.com/your-facebook-page-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+        Facebook Page
       </a>
-      <a href="https://mock-test-hub.netlify.app/" target="_blank">
-        <i class="fas fa-globe"></i> Website
+      <!-- Website Icon (Generic Globe SVG for website) -->
+      <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer">
+        <svg class="website-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.22-1.79L9 14v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        Website
       </a>
     </div>
-    <br>
-    Prepared for IBA STS Screening Test (Matric Level)
-    <strong>"Success is the sum of small efforts, repeated day in and day out."</strong>
+    <p>Prepared for IBA STS Screening Test (Matric Level)</p>
+    <p class="italic">"Success is the sum of small efforts, repeated day in and day out."</p>
   </footer>
 
   <script>
-    const toggleBtn = document.getElementById('toggleMode');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      toggleBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-      localStorage.setItem('mode', isDark ? 'dark' : 'light');
-    });
-
-    // Apply mode on load
-    if (localStorage.getItem('mode') === 'dark') {
-      document.body.classList.add('dark');
-      toggleBtn.innerHTML = '☀️ Light Mode';
-    } else {
-      toggleBtn.innerHTML = '🌙 Dark Mode';
-    }
-  </script>
-
-  <script>
-    const textArray = ["Prepare Smart", "Practice Daily", "Ace Your Exam!"];
-    let typingIndex = 0;
-    let charIndex = 0;
-    const typingElement = document.querySelector('.typing-text');
-
-    function typeText() {
-      if (!typingElement) return;
-      if (charIndex <= textArray[typingIndex].length) {
-        typingElement.textContent = textArray[typingIndex].substring(0, charIndex++);
-        setTimeout(typeText, 100);
-      } else {
-        setTimeout(() => eraseText(), 1200);
-      }
-    }
-
-    function eraseText() {
-      if (!typingElement) return;
-      if (charIndex >= 0) {
-        typingElement.textContent = textArray[typingIndex].substring(0, charIndex--);
-        setTimeout(eraseText, 50);
-      } else {
-        typingIndex = (typingIndex + 1) % textArray.length;
-        setTimeout(typeText, 300);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (typingElement) typeText();
-    });
-  </script>
-
-  <script>
-    // Get the button
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopBtn.style.display = "block";
-        scrollToTopBtn.style.opacity = "1";
-      } else {
-        scrollToTopBtn.style.opacity = "0";
-        // Optional: Hide after transition to prevent interaction during fade-out
-        setTimeout(() => {
-          if (scrollToTopBtn.style.opacity === "0") {
-            scrollToTopBtn.style.display = "none";
-          }
-        }, 300); // Match CSS transition duration
-      }
-    };
-
-    // When the user clicks on the button, scroll to the top of the document
-    scrollToTopBtn.addEventListener("click", function() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-  </script>
-
-  <script>
-    // Confetti effect for the Official Sample Paper card
-    const officialSampleCard = document.querySelector('.card-official-sample');
-    let confettiInterval;
-
-    function getRandomConfettiColor() {
-      const rootStyles = getComputedStyle(document.documentElement);
-      const colors = [
-        rootStyles.getPropertyValue('--primary-blue').trim(),
-        rootStyles.getPropertyValue('--secondary-blue').trim(),
-        rootStyles.getPropertyValue('--accent-green').trim(),
-        rootStyles.getPropertyValue('--accent-orange').trim(),
-        '#ffffff' // Always include white
-      ];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function createConfetti(x, y) {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.position = 'fixed'; // Fixed to viewport
-      confetti.style.left = `${x}px`;
-      confetti.style.top = `${y}px`;
-      confetti.style.width = '10px';
-      confetti.style.height = '10px';
-      confetti.style.backgroundColor = getRandomConfettiColor();
-      confetti.style.borderRadius = '50%'; // Make it round or square
-      confetti.style.opacity = '0.8';
-      confetti.style.pointerEvents = 'none'; // Don't block clicks
-      confetti.style.zIndex = '9999'; // On top of everything
-
-      document.body.appendChild(confetti);
-
-      const angle = Math.random() * Math.PI * 2; // Random direction
-      const velocity = Math.random() * 5 + 5; // Random velocity
-      const rotation = Math.random() * 360; // Initial rotation
-
-      confetti.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-
-      let startTime = null;
-
-      function animateConfetti(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const progress = (currentTime - startTime) / 1500; // Animation duration 1.5s
-
-        if (progress < 1) {
-          const currentX = x + velocity * Math.cos(angle) * progress * 60;
-          const currentY = y + velocity * Math.sin(angle) * progress * 60 + progress * progress * 100; // Add gravity
-          const currentOpacity = 0.8 * (1 - progress);
-          const currentRotation = rotation + progress * 720; // Spin twice
-
-          confetti.style.left = `${currentX}px`;
-          confetti.style.top = `${currentY}px`;
-          confetti.style.opacity = currentOpacity;
-          confetti.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
-
-          requestAnimationFrame(animateConfetti);
-        } else {
-          confetti.remove();
-        }
-      }
-
-      requestAnimationFrame(animateConfetti);
-    }
-
-    if (officialSampleCard) {
-      officialSampleCard.addEventListener('mouseenter', (e) => {
-        // Get the center of the card
-        const rect = officialSampleCard.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        // Burst initially
-        for (let i = 0; i < 20; i++) {
-          createConfetti(centerX, centerY);
-        }
-
-        // Continuous confetti while hovered (optional, can be removed for just a burst)
-        confettiInterval = setInterval(() => {
-          for (let i = 0; i < 5; i++) {
-            createConfetti(centerX, centerY);
-          }
-        }, 100);
-      });
-
-      officialSampleCard.addEventListener('mouseleave', () => {
-        clearInterval(confettiInterval);
-      });
-    }
-  </script>
-
-  <script>
-    // Initialize particles.js
-    particlesJS('particles-js', {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 0.6,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 6, // Increased particle size
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.5, // Adjusted for larger particles
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "grab"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 140,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
+    // Dark mode toggle functionality
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      // Update button text based on current mode
+      darkModeToggle.textContent = document.body.classList.contains('dark-mode')
+        ? '☀️ Light Mode'
+        : '🌑 Dark Mode';
     });
   </script>
 </body>
-
 </html>
